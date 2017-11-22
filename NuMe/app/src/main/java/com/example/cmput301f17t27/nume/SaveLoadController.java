@@ -54,6 +54,8 @@ public class SaveLoadController {
      */
     public static void saveProfileToFile(Context context, Profile profile) {
         context.deleteFile(PROFILEFILENAME);
+        context.deleteFile(EVENTSFILENAME);
+        context.deleteFile(EVENTFILENAME);
         try {
             FileOutputStream stream = context.openFileOutput(PROFILEFILENAME, 0);
             OutputStreamWriter writer = new OutputStreamWriter(stream);
@@ -109,6 +111,7 @@ public class SaveLoadController {
     public static void saveEventsToFile(Context context, ArrayList<HabitEvent> events, int index) {
         EventCache eventCache = new EventCache(events, index);
         context.deleteFile(EVENTSFILENAME);
+        context.deleteFile(EVENTFILENAME);
 
         try {
             FileOutputStream stream = context.openFileOutput(EVENTSFILENAME, 0);

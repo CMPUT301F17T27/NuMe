@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -89,7 +91,6 @@ public class AddEventActivity extends AppCompatActivity {
                 if(isChecked) {
                     int permission = ActivityCompat.checkSelfPermission(AddEventActivity.this,
                             Manifest.permission.ACCESS_FINE_LOCATION);
-
                     //If the permission has already been granted
                     if (permission != PackageManager.PERMISSION_GRANTED) {
                         Permissions.requestLocationPermission(AddEventActivity.this);
@@ -107,12 +108,15 @@ public class AddEventActivity extends AppCompatActivity {
 
                 Location loc;
                 if(location.isChecked()) {
+                    Log.d("Location", "onClick: Is Location Checked");
                     int permission = ActivityCompat.checkSelfPermission(AddEventActivity.this,
                             Manifest.permission.ACCESS_FINE_LOCATION);
 
                     //If the permission has already been granted
                     if (permission == PackageManager.PERMISSION_GRANTED) {
+                        //MapController mapController = new MapController();
                         loc = MapController.getLocation(context);
+                        Log.d("Location", "If granted: "+loc);
                     }
                     else {
                         loc = null;

@@ -24,6 +24,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //deleteFile("profile.sav");
+        //deleteFile("events.sav");
+        //deleteFile("event.sav");
 
         //UI definitions
         userName = (EditText) findViewById(R.id.username);

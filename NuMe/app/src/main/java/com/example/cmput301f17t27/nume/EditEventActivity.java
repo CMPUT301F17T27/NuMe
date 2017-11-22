@@ -8,11 +8,14 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
+
+import java.util.Map;
 
 public class EditEventActivity extends AppCompatActivity {
     //Request codes for startingActivityForResult
@@ -90,6 +93,8 @@ public class EditEventActivity extends AppCompatActivity {
                 habitEvent.setComment(comment.getText().toString());
                 habitEvent.setImage(imagePath);
                 if(location.isChecked()) {
+                    Log.d("Location", "onClick: Is Location Checked");
+                    //MapController mapController = new MapController();
                     habitEvent.setLocation(MapController.getLocation(context));
                 }
                 else {

@@ -260,6 +260,10 @@ public class ViewHabitActivity extends AppCompatActivity {
                 //Un-bundle the habit and save it to the habit member var
                 habit = (Habit) bundle.getSerializable("HABIT");
 
+                //Save the habit events locally
+                SaveLoadController.saveEventsToFile(ViewHabitActivity.this, habit.getEvents(),
+                        habitIndex);
+
                 //Set changed to true because we made changes to the habit
                 changed = true;
 
