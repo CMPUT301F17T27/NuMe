@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class HabitEventTest {
 
     /* public HabitEventTest(){
-        super(com.example.cmput301f17t27.nume.LoginActivity.class);
+        super(com.example.cmput301f17t27.nume.MainActivity.class);
     }
     */
 
@@ -26,6 +26,9 @@ public class HabitEventTest {
 
     @Test
     public void testSetComment() {
-        Habit
+        HabitEvent habitEvent = new HabitEvent();
+        String comment = "I'm a comment";
+        habitEvent.setComment(comment);
+        assertEquals(habitEvent.getComment(), comment);
     }
 }
