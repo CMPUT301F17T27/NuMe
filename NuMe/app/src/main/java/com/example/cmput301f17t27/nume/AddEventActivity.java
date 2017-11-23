@@ -22,13 +22,23 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import org.apache.commons.lang3.ObjectUtils;
+
 public class AddEventActivity extends AppCompatActivity {
     //Request codes for startingActivityForResult
     protected static final int CHOOSE_IMAGE_REQUEST_CODE = 104;
     //Return codes for startingActivityForResult
     protected static final int NO_ACTION_RESULT_CODE = 0;
     protected static final int EVENT_ADDED_RESULT_CODE = 1;
-
+    //FusedLocationProviderClient declaration
+    private FusedLocationProviderClient mFusedLocationClient;
+    private Double Lat;
+    private Double Long;
+    private Location Loc;
     //Context declaration
     private Context context;
 
@@ -42,12 +52,11 @@ public class AddEventActivity extends AppCompatActivity {
     private Button addButton;
     private Button cancelButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
-
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         //Context definition
         context = this;
 
@@ -88,7 +97,7 @@ public class AddEventActivity extends AppCompatActivity {
         //Setup the location switch listener
         location.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     int permission = ActivityCompat.checkSelfPermission(AddEventActivity.this,
                             Manifest.permission.ACCESS_FINE_LOCATION);
                     //If the permission has already been granted
@@ -102,30 +111,28 @@ public class AddEventActivity extends AppCompatActivity {
 
         //Setup the add button listener
         addButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 //Get the values of the UI elements and create a habit event object
                 String commentStr = comment.getText().toString();
 
                 Location loc;
-                if(location.isChecked()) {
+                if (location.isChecked()) {
                     Log.d("Location", "onClick: Is Location Checked");
                     int permission = ActivityCompat.checkSelfPermission(AddEventActivity.this,
                             Manifest.permission.ACCESS_FINE_LOCATION);
-
                     //If the permission has already been granted
                     if (permission == PackageManager.PERMISSION_GRANTED) {
                         //MapController mapController = new MapController();
-                        loc = MapController.getLocation(context);
-                        Log.d("Location", "If granted: "+loc);
-                    }
-                    else {
+                        //loc = mapController.getLocation(context);
+                        getLocation();
+                        Log.d("Location", "If granted: "+Loc);
+                    } else {
                         loc = null;
                     }
-                }
-                else {
+                } else {
                     loc = null;
                 }
-                HabitEvent habitEvent = new HabitEvent(commentStr, imagePath, loc);
+                HabitEvent habitEvent = new HabitEvent(commentStr, imagePath, Loc);
 
                 //Bundle up the habit event object and return to the view habit activity
                 Intent intent = new Intent();
@@ -140,7 +147,7 @@ public class AddEventActivity extends AppCompatActivity {
 
         //Setup the cancel button listener
         cancelButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 //Return back to the ViewHabit activity
                 Intent intent = new Intent();
                 setResult(NO_ACTION_RESULT_CODE, intent);
@@ -149,6 +156,37 @@ public class AddEventActivity extends AppCompatActivity {
         });
     }
 
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Log.d("Location", "Inside Fucntion:");
+        mFusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                Log.d("Location", "OnSuccess:");
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    // Logic to handle location object
+
+                    Loc= location;
+
+                    Long = location.getLongitude();
+                    Lat = location.getLatitude();
+                    Log.d("Location", "getLocation: I dunno:"+Lat);
+
+                }
+            }
+        });
+        return;
+    }
 
 
     @Override

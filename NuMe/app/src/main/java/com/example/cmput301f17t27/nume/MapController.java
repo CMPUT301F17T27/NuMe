@@ -9,6 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import java.util.List;
 
 /**
@@ -16,8 +20,10 @@ import java.util.List;
  */
 
 public class MapController {
+    //private FusedLocationProviderClient mFusedLocationProviderClient;
 
-    public static Location getLocation(Context context) {
+    public Location getLocation(Context context) {
+        //mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
         /*
             This function gets the last known location of the device.
 
@@ -43,20 +49,9 @@ public class MapController {
                 if (GPSEnabled && lm != null)  {
                     //LocationListener locationListener = new MyLocationListener();
                     //lm.requestLocationUpdates( LocationManager.GPS_PROVIDER,50,10, locationListener);
-                    List<String> providers = lm.getProviders(true);
-                    Location bestLocation = null;
-                    for (String provider : providers) {
-                        Location l = lm.getLastKnownLocation(provider);
-                        if (l == null) {
-                            continue;
-                        }
-                        if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                            // Found best last known location: %s", l);
-                            bestLocation = l;
-                        }
-                    }
-                    Log.d("Location", "If granted gps!: "+bestLocation);
-                    return bestLocation;
+                    //LocationListener locationListener = new MyLocationListener();
+                    //lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,500,10,locationListener);
+                    Log.d("Location", "If granted gps!: ");
                     //return lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 }
                 if (networkEnabled && lm != null) {
@@ -70,10 +65,11 @@ public class MapController {
             //Security exception
         }
 
+
         return null;
     }
 
-    /*
+
     private class MyLocationListener implements LocationListener {
 
 
@@ -92,6 +88,6 @@ public class MapController {
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {}
 
-    }*/
+    }
 
 }

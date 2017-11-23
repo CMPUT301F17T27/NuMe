@@ -94,8 +94,8 @@ public class EditEventActivity extends AppCompatActivity {
                 habitEvent.setImage(imagePath);
                 if(location.isChecked()) {
                     Log.d("Location", "onClick: Is Location Checked");
-                    //MapController mapController = new MapController();
-                    habitEvent.setLocation(MapController.getLocation(context));
+                    MapController mapController = new MapController();
+                    habitEvent.setLocation(mapController.getLocation(context));
                 }
                 else {
                     habitEvent.setLocation(null);

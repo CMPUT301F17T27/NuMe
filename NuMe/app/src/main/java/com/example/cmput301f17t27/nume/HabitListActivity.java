@@ -169,7 +169,8 @@ public class HabitListActivity extends AppCompatActivity
         }
 
         else if (id == R.id.mapbutton) {
-
+            Intent intent = new Intent(HabitListActivity.this, MapsActivity.class);
+            startActivity(intent);
         }
 
         else if (id == R.id.followersbutton) {
