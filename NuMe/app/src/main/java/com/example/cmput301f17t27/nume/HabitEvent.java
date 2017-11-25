@@ -11,6 +11,9 @@ public class HabitEvent implements Serializable {
     private String comment;
     private String image;
     private Location location;
+    private Double Lat;
+    private Double Long;
+
 
 
     public HabitEvent() {
@@ -48,7 +51,7 @@ public class HabitEvent implements Serializable {
 
 
 
-    public HabitEvent( String comment, String image, Location location) {
+    public HabitEvent( String comment, String image, Double Long, Double Lat) {
         this.dateCompleted = new Date();
 
         if ( comment.length() <= 20 ) {
@@ -56,7 +59,9 @@ public class HabitEvent implements Serializable {
         }
 
         this.image = image;
-        this.location = location;
+        //this.location = location;
+        this.Lat =Long;
+        this.Long =Long;
     }
 
 

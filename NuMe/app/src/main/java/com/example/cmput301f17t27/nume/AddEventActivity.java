@@ -11,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,9 @@ import android.widget.Switch;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import org.apache.commons.lang3.ObjectUtils;
 
@@ -44,6 +47,7 @@ public class AddEventActivity extends AppCompatActivity {
 
     //Image path declaration
     private String imagePath;
+    private String commentStr;
 
     //UI declarations
     private ImageView image;
@@ -103,6 +107,7 @@ public class AddEventActivity extends AppCompatActivity {
                     //If the permission has already been granted
                     if (permission != PackageManager.PERMISSION_GRANTED) {
                         Permissions.requestLocationPermission(AddEventActivity.this);
+                        getLocation();
                     }
                 }
             }
@@ -113,7 +118,7 @@ public class AddEventActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Get the values of the UI elements and create a habit event object
-                String commentStr = comment.getText().toString();
+                commentStr = comment.getText().toString();
 
                 Location loc;
                 if (location.isChecked()) {
@@ -125,13 +130,15 @@ public class AddEventActivity extends AppCompatActivity {
                         //MapController mapController = new MapController();
                         //loc = mapController.getLocation(context);
                         getLocation();
-                        Log.d("Location", "If granted: "+Loc);
+                        Log.d("Location", "If granted: "+Lat+" "+Long);
                     } else {
-                        loc = null;
+                        result();
                     }
                 } else {
-                    loc = null;
+                    result();
                 }
+                //Log.d("Location", "Check: "+Lat+" "+Long+" Loc;"+Loc);
+                /*
                 HabitEvent habitEvent = new HabitEvent(commentStr, imagePath, Loc);
 
                 //Bundle up the habit event object and return to the view habit activity
@@ -141,6 +148,7 @@ public class AddEventActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
                 setResult(EVENT_ADDED_RESULT_CODE, intent);
                 finish();
+                */
             }
         });
 
@@ -156,6 +164,18 @@ public class AddEventActivity extends AppCompatActivity {
         });
     }
 
+    private void result(){
+        Log.d("Location", "Check: "+Lat+" "+Long+" Loc;"+Loc);
+        HabitEvent habitEvent = new HabitEvent(commentStr, imagePath, Long,Lat);
+        //Bundle up the habit event object and return to the view habit activity
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("EVENT", habitEvent);
+        intent.putExtras(bundle);
+        setResult(EVENT_ADDED_RESULT_CODE, intent);
+        finish();
+    }
+
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -168,6 +188,7 @@ public class AddEventActivity extends AppCompatActivity {
             return;
         }
         Log.d("Location", "Inside Fucntion:");
+
         mFusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
@@ -181,11 +202,13 @@ public class AddEventActivity extends AppCompatActivity {
                     Long = location.getLongitude();
                     Lat = location.getLatitude();
                     Log.d("Location", "getLocation: I dunno:"+Lat);
+                    result();
 
                 }
             }
         });
-        return;
+
+        //return;
     }
 
 
