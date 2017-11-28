@@ -2,6 +2,7 @@ package com.example.cmput301f17t27.nume;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -1,11 +1,15 @@
 package com.example.cmput301f17t27.nume;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 
-import java.util.Map;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class EditEventActivity extends AppCompatActivity {
     //Request codes for startingActivityForResult
@@ -23,6 +29,12 @@ public class EditEventActivity extends AppCompatActivity {
     //Return codes for startingActivityForResult
     protected static final int NO_ACTION_RESULT_CODE = 0;
     protected static final int EVENT_CHANGED_RESULT_CODE = 5;
+
+    //Location
+    private FusedLocationProviderClient mFusedLocationClient;
+    private double Long;
+    private double Lat;
+    private Location Loc;
 
     //Context declaration
     private Context context;
@@ -43,6 +55,7 @@ public class EditEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_event);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         //Context definition
         context = this;
@@ -67,7 +80,7 @@ public class EditEventActivity extends AppCompatActivity {
             image.setImageBitmap(BitmapFactory.decodeFile(imageStr));
         }
         comment.setText(habitEvent.getComment());
-        if(habitEvent.getLocation() == null) {
+        if(habitEvent.voidLocation()) {
             location.setChecked(false);
         }
         else {
@@ -94,13 +107,13 @@ public class EditEventActivity extends AppCompatActivity {
                 habitEvent.setImage(imagePath);
                 if(location.isChecked()) {
                     Log.d("Location", "onClick: Is Location Checked");
-                    MapController mapController = new MapController();
-                    habitEvent.setLocation(mapController.getLocation(context));
+                    getLocation();
                 }
                 else {
-                    habitEvent.setLocation(null);
+                    habitEvent.setNullLocation();
+                    result();
                 }
-
+                /*
                 //Bundle up the habit event and return back to the view event activity
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
@@ -108,6 +121,7 @@ public class EditEventActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
                 setResult(EVENT_CHANGED_RESULT_CODE, intent);
                 finish();
+                */
             }
         });
 
@@ -122,8 +136,45 @@ public class EditEventActivity extends AppCompatActivity {
             }
         });
     }
+    private void result(){
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("EVENT", habitEvent);
+        intent.putExtras(bundle);
+        setResult(EVENT_CHANGED_RESULT_CODE, intent);
+        finish();
+    }
 
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
 
+        mFusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    // Logic to handle location object
+                    Long = location.getLongitude();
+                    Lat = location.getLatitude();
+                    habitEvent.setLat(Lat);
+                    habitEvent.setLong(Long);
+                    result();
+
+                }
+            }
+        });
+
+        //return;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

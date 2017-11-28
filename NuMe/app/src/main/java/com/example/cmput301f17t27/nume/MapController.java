@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.List;
 
 /**
- * Created by Colman on 12/11/2017.
+ * OBS
  */
 
 public class MapController {

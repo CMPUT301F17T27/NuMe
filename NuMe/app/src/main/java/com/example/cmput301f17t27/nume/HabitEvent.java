@@ -1,6 +1,7 @@
 package com.example.cmput301f17t27.nume;
 
 import android.location.Location;
+import android.util.Log;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -60,7 +61,7 @@ public class HabitEvent implements Serializable {
 
         this.image = image;
         //this.location = location;
-        this.Lat =Long;
+        this.Lat =Lat;
         this.Long =Long;
     }
 
@@ -84,10 +85,12 @@ public class HabitEvent implements Serializable {
 
 
 
-    public Location getLocation() {
-        return location;
+    public Double getLat() {
+        return Lat;
     }
-
+    public Double getLong() {
+        return Long;
+    }
 
 
     public void setDateCompleted() {
@@ -108,9 +111,21 @@ public class HabitEvent implements Serializable {
         this.image = image;
     }
 
-
-
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLat(Double lat){
+        this.Lat=lat;
+    }
+    public void setLong(Double Long){
+        this.Long=Long;
+    }
+    public boolean voidLocation(){
+        Log.d("Location", "voidLocation: "+this.getLat());
+        if( this.getLat()==null ){
+            return true;
+        }
+        return false;
+    }
+    public void setNullLocation(){
+        this.Long=null;
+        this.Lat=null;
     }
 }

@@ -53,7 +53,7 @@ public class HabitListActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_habit_list);
+        setContentView(R.layout.activity_main_sidebar);
 
         //Un-bundle the profile sent from the login screen (The one on elastic search)
         Intent intent = getIntent();
@@ -178,6 +178,9 @@ public class HabitListActivity extends AppCompatActivity
 
         else if (id == R.id.mapbutton) {
             Intent intent = new Intent(HabitListActivity.this, MapsActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Profile",profile);
+            intent.putExtras(bundle);
             startActivity(intent);
         }
 
