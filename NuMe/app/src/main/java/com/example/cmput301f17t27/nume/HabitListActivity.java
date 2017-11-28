@@ -135,7 +135,8 @@ public class HabitListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.actionsettings) {
-            return true;
+            Intent intent = new Intent(HabitListActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -186,6 +187,10 @@ public class HabitListActivity extends AppCompatActivity
         }
 
         else if (id == R.id.followeesbutton) {
+
+        }
+
+        else if (id == R.id.profileButton) {
 
         }
 
