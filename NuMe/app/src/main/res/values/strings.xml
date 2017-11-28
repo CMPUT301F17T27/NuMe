@@ -50,4 +50,6 @@
     <string name="profile">Profile</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="editProfile">Edit Profile</string>
+    <string name="ok">OK</string>
+    <string name="newName">New Full Name</string>
 </resources>
