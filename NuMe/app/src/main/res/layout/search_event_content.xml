@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="328dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/searchEventNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="TextView"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/searchEventCommentsText"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/searchEventDateText"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/SearchEventImage"
+        android:layout_width="147dp"
+        android:layout_height="113dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+
+
+</LinearLayout>

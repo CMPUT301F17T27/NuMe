@@ -166,6 +166,14 @@ public class HabitListActivity extends AppCompatActivity
 
         else if (id == R.id.eventsearchbutton) {
 
+            Intent intent = new Intent(HabitListActivity.this, searchEventActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Profile",profile);
+            intent.putExtras(bundle);
+
+            startActivity(intent);
+
+
         }
 
         else if (id == R.id.mapbutton) {
