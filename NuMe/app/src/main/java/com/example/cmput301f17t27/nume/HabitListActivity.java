@@ -134,9 +134,10 @@ public class HabitListActivity extends AppCompatActivity
         //as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.actionsettings) {
+        if (id == R.id.logout) {
             Intent intent = new Intent(HabitListActivity.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -191,6 +192,12 @@ public class HabitListActivity extends AppCompatActivity
         }
 
         else if (id == R.id.profileButton) {
+
+            Intent intent = new Intent(HabitListActivity.this, EditProfileActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("Profile", profile);
+            intent.putExtras(bundle);
+            startActivity(intent);
 
         }
 

@@ -38,7 +38,7 @@
             <item
                 android:id="@+id/profileButton"
                 android:icon="@drawable/ic_menu_share"
-                android:title="@string/profile" />
+                android:title="@string/editProfile" />
         </menu>
     </item>
 
