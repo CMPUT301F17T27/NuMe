@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                         bundle.putSerializable("PROFILE", profile);
                         intent.putExtras(bundle);
                         startActivity(intent);
+                        finish();
                     }
 
                     //If the profile doesn't exist

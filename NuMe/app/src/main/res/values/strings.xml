@@ -46,4 +46,7 @@
     <string name="username">Username</string>
     <string name="fullName">Full Name</string>
     <string name="title_activity_maps">Map</string>
+    <string name="logout">Logout</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="newName">New Full Name</string>
 </resources>

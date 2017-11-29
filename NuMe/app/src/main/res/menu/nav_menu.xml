@@ -33,4 +33,13 @@
         </menu>
     </item>
 
+    <item android:title="Profile">
+        <menu>
+            <item
+                android:id="@+id/editprofilebutton"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/editProfile" />
+        </menu>
+    </item>
+
 </menu>
