@@ -71,6 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     CurrentLoc.setLongitude(Long);
 
                     circle =  mMap.addCircle(new CircleOptions().center(CurrentLocation).radius(5000).strokeColor(Color.GRAY));
+
                     for(Marker marker : CurrentEventMarkers){
                         Location EventLoc = new Location("");
                         EventLoc.setLatitude(marker.getPosition().latitude);
@@ -141,9 +142,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     // Logic to handle location object
                     Long = location.getLongitude();
                     Lat = location.getLatitude();
-                    LatLng edmonton = new LatLng(Lat, Long);
+                    LatLng CurrentLocation = new LatLng(Lat, Long);
+                    mMap.addMarker(new MarkerOptions().position(CurrentLocation)
+                            .title("Current Location"));
                     //Marker marker = mMap.addMarker(new MarkerOptions().position(edmonton).title("Current Location"));
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(edmonton,12));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(CurrentLocation,12));
                 }
             }
         });

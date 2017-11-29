@@ -105,15 +105,18 @@ public class EditEventActivity extends AppCompatActivity {
                 //Get the values of the UI fields and save them to the habit event object
                 habitEvent.setComment(comment.getText().toString());
                 habitEvent.setImage(imagePath);
-                if(location.isChecked()) {
+
+                if(location.isChecked() && habitEvent.voidLocation()) {
                     Log.d("Location", "onClick: Is Location Checked");
                     getLocation();
                 }
-                else {
+                else if( !location.isChecked() ) {
                     habitEvent.setNullLocation();
                     result();
+                }else{
+                    result();
                 }
-                /*
+                /* 86 84
                 //Bundle up the habit event and return back to the view event activity
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
@@ -163,8 +166,12 @@ public class EditEventActivity extends AppCompatActivity {
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
                     // Logic to handle location object
-                    Long = location.getLongitude();
-                    Lat = location.getLatitude();
+                    //Setting Fake Locations
+                    //Lat=53.521374;
+                    //Long=-113.6061474;
+
+                    //Long = location.getLongitude();
+                    //Lat = location.getLatitude();
                     habitEvent.setLat(Lat);
                     habitEvent.setLong(Long);
                     result();
