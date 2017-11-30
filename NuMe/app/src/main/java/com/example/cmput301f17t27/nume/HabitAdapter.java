@@ -26,24 +26,23 @@ public class HabitAdapter extends ArrayAdapter<Habit> {
         this.habitArrayList = habitArrayList;
     }
 
-
-
     //Override the getView for the new list format
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View habitView = inflater.inflate(R.layout.habit_entry, parent, false);
+            View habitView = inflater.inflate(R.layout.habit_entry, parent, false);
 
-        TextView titleView = habitView.findViewById(R.id.title);
-        titleView.setText(habitArrayList.get(position).getTitle());
+            TextView titleView = habitView.findViewById(R.id.title);
+            titleView.setText(habitArrayList.get(position).getTitle());
 
-        TextView dateView = habitView.findViewById(R.id.date);
-        dateView.setText(habitArrayList.get(position).getDateToStart().toString());
+            TextView dateView = habitView.findViewById(R.id.date);
+            dateView.setText(habitArrayList.get(position).getDateToStart().toString());
 
-        TextView reasonView = habitView.findViewById(R.id.reason);
-        reasonView.setText(habitArrayList.get(position).getReason());
+            TextView reasonView = habitView.findViewById(R.id.reason);
+            reasonView.setText(habitArrayList.get(position).getReason());
+
 
         return habitView;
     }

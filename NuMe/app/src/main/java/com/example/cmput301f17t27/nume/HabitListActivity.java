@@ -168,6 +168,8 @@ public class HabitListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.habitsbutton) {
+            adapter= new HabitAdapter(this, profile.getHabitList());
+            habitList.setAdapter(adapter);
             drawer.closeDrawer(GravityCompat.START);
         }
 
@@ -181,9 +183,14 @@ public class HabitListActivity extends AppCompatActivity
             startActivity(intent);
 
 
-        }
+        }else if(id == R.id.todayshabitsbutton){
+            //HabitAdapter UpdatingHabitAdapter = new HabitAdapter(this, profile.getTodaysHabitList());
+            adapter= new HabitAdapter(this, profile.getTodaysHabitList());
+            habitList.setAdapter(adapter);
+            //habitList.setAdapter(UpdatingHabitAdapter);
+            drawer.closeDrawer(GravityCompat.START);
 
-        else if (id == R.id.mapbutton) {
+        }else if (id == R.id.mapbutton) {
             Intent intent = new Intent(HabitListActivity.this, MapsActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("Profile",profile);

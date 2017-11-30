@@ -1,9 +1,15 @@
 package com.example.cmput301f17t27.nume;
 
+import android.util.Log;
+
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Creates the profile class
@@ -68,6 +74,20 @@ public class Profile implements Serializable {
         return habitList;
     }
 
+    public  ArrayList<Habit> getTodaysHabitList(){
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        String sDay=  new SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.getTime());
+        ArrayList<Habit> todaysHabits = new ArrayList<>();
+        Log.d("Date", "getTodaysHabitList: "+sDay);
+        for( Habit habit : habitList){
+            if(habit.getFrequency().contains(sDay)){
+                todaysHabits.add(habit);
+            }
+        }
+
+        return todaysHabits;
+    }
 
 
     public void setName(String newName){

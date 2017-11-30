@@ -8,12 +8,16 @@
                 android:icon="?android:attr/textCheckMark"
                 android:title="@string/habits" />
             <item
+                android:id="@+id/todayshabitsbutton"
+                android:icon="?android:attr/textCheckMark"
+                android:title="Today's Habits" />
+            <item
                 android:id="@+id/eventsearchbutton"
                 android:icon="@android:drawable/ic_menu_search"
                 android:title="@string/eventSeacrh" />
+
             <item
                 android:id="@+id/mapbutton"
-
                 android:icon="@android:drawable/ic_menu_mapmode"
                 android:title="@string/map"
                 android:visible="true" />
