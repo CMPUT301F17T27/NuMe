@@ -170,8 +170,8 @@ public class EditEventActivity extends AppCompatActivity {
                     //Lat=53.521374;
                     //Long=-113.6061474;
 
-                    //Long = location.getLongitude();
-                    //Lat = location.getLatitude();
+                    Long = location.getLongitude();
+                    Lat = location.getLatitude();
                     habitEvent.setLat(Lat);
                     habitEvent.setLong(Long);
                     result();
