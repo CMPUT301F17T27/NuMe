@@ -3,10 +3,13 @@ package com.example.cmput301f17t27.nume;
 import android.location.Location;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class HabitEvent implements Serializable {
+public class HabitEvent implements Serializable{
+    private String HabitName;
     private Date dateCompleted;
     private String comment;
     private String image;
@@ -51,7 +54,7 @@ public class HabitEvent implements Serializable {
 
 
 
-    public HabitEvent( String comment, String image, Double Long, Double Lat) {
+    public HabitEvent( String HabitName, String comment, String image, Double Long, Double Lat) {
         this.dateCompleted = new Date();
 
         if ( comment.length() <= 20 ) {
@@ -62,8 +65,15 @@ public class HabitEvent implements Serializable {
         //this.location = location;
         this.Lat =Long;
         this.Long =Long;
+        this.HabitName = HabitName;
     }
 
+
+
+
+    public String getHabitName(){return HabitName;}
+
+    public void setHabitName(String HabitName){this.HabitName = HabitName;}
 
 
     public Date getDateCompleted() {
@@ -113,4 +123,19 @@ public class HabitEvent implements Serializable {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+//    @Override
+//    public int compareTo(HabitEvent habitEvent) {
+//        Date habitEventCompletedDate = habitEvent.getDateCompleted();
+//        long numericalDateRepresentation = habitEventCompletedDate.getTime();
+//        int newInt = (int) numericalDateRepresentation;
+//
+//        return this.getDateCompleted().getTime() - newInt;
+//
+//        /* For Descending order do like this */
+//        //return compareage-this.studentage;
+//    }
+
+
+
 }

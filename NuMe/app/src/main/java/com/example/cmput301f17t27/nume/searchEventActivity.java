@@ -15,6 +15,11 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class searchEventActivity extends AppCompatActivity {
 
@@ -27,7 +32,6 @@ public class searchEventActivity extends AppCompatActivity {
     private ArrayList<HabitEvent> habitEventArrayList = new ArrayList<>();
     private EventSearchAdapter eventSearchAdapter;
     private Profile profile;
-    private ArrayList<String> HabitName = new ArrayList<String>();
     ListView listView;
     SearchView searchView;
 
@@ -49,15 +53,23 @@ public class searchEventActivity extends AppCompatActivity {
         for (Habit habits : habitArrayList) {
             ArrayList<HabitEvent> habitEvents = habits.getEvents();
             for (HabitEvent event : habitEvents) {
-                HabitName.add(habits.getTitle());
                 habitEventArrayList.add(event);
             }
 
         }
 
+        Collections.sort(habitEventArrayList, new Comparator<HabitEvent>() {
+            @Override
+            public int compare(HabitEvent habitEventT1, HabitEvent habitEventT2) {
+                return habitEventT2.getDateCompleted().compareTo(habitEventT1.getDateCompleted());
+            }
+        });
+
+
+
         //Log.i("habitEventList",String.valueOf(habitEventArrayList.size()));
         listView = (ListView) findViewById(R.id.HabitEventList);
-        eventSearchAdapter = new EventSearchAdapter(this, habitEventArrayList, HabitName);
+        eventSearchAdapter = new EventSearchAdapter(this, habitEventArrayList);
         listView.setAdapter(eventSearchAdapter);
 
 
@@ -72,7 +84,7 @@ public class searchEventActivity extends AppCompatActivity {
                 HabitEvent habitEvent = habitEventArrayList.get(position);
                 bundle.putSerializable("EVENT",habitEvent);
                 intent.putExtras(bundle);
-                startActivityForResult(intent, EDIT_EVENT_REQUEST_CODE);
+                startActivity(intent);
             }
         });
     }
@@ -112,14 +124,27 @@ public class searchEventActivity extends AppCompatActivity {
 
                     final ArrayList<HabitEvent> habitEvents = new ArrayList<>();
                     for(HabitEvent habitEvent: habitEventArrayList){
-                        if(habitEvent.getComment().contains(newText)){
+
+                        if(habitEvent.getComment().contains(newText) || habitEvent.getHabitName().contains(newText)){
                             habitEvents.add(habitEvent);
                         }
                     }
+
+
+
+
+
                     //Log.i("habitEventNumber",String.valueOf(habitEvents.size()));
                     //habitEvents contains the right habitEvent; just need to display them
 
-                    eventSearchAdapter = new EventSearchAdapter(searchEventActivity.this, habitEvents, HabitName);
+                    Collections.sort(habitEvents, new Comparator<HabitEvent>() {
+                        @Override
+                        public int compare(HabitEvent habitEventT1, HabitEvent habitEventT2) {
+                            return habitEventT2.getDateCompleted().compareTo(habitEventT1.getDateCompleted());
+                        }
+                    });
+
+                    eventSearchAdapter = new EventSearchAdapter(searchEventActivity.this, habitEvents);
                     //eventSearchAdapter.getFilter().filter(newText);
                     listView.setAdapter(eventSearchAdapter);
 
@@ -132,7 +157,8 @@ public class searchEventActivity extends AppCompatActivity {
                             HabitEvent habitEvent = habitEvents.get(position);
                             bundle.putSerializable("EVENT",habitEvent);
                             intent.putExtras(bundle);
-                            startActivityForResult(intent, EDIT_EVENT_REQUEST_CODE);
+                            startActivity(intent);
+
                         }
                     });
 

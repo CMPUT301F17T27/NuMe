@@ -106,7 +106,12 @@ public class ViewHabitActivity extends AppCompatActivity {
         addEventButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 //Start the add event activity
+
                 Intent intent = new Intent(ViewHabitActivity.this, AddEventActivity.class);
+                //just pass the habitName
+                Bundle passHabitbundle = new Bundle();
+                passHabitbundle.putSerializable("habitName",habit);
+                intent.putExtras(passHabitbundle);
                 startActivityForResult(intent, ADD_EVENT_REQUEST_CODE);
             }
         });
@@ -177,6 +182,8 @@ public class ViewHabitActivity extends AppCompatActivity {
         if(requestCode == ADD_EVENT_REQUEST_CODE) {
             //If the add button was clicked in that activity
             if (resultCode == EVENT_ADDED_RESULT_CODE) {
+
+
                 Bundle bundle = data.getExtras();
 
                 //Un-bundle the event

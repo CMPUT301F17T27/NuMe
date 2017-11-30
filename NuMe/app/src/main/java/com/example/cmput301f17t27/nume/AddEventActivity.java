@@ -48,6 +48,7 @@ public class AddEventActivity extends AppCompatActivity {
     //Image path declaration
     private String imagePath;
     private String commentStr;
+    private String HabitName;
 
     //UI declarations
     private ImageView image;
@@ -166,7 +167,12 @@ public class AddEventActivity extends AppCompatActivity {
 
     private void result(){
         Log.d("Location", "Check: "+Lat+" "+Long+" Loc;"+Loc);
-        HabitEvent habitEvent = new HabitEvent(commentStr, imagePath, Long,Lat);
+
+        //note: the "habitName" is actual a habit object
+        Bundle getHabitNameBundle = getIntent().getExtras();
+        Habit habit = (Habit) getHabitNameBundle.getSerializable("habitName");
+        HabitName = habit.getTitle();
+        HabitEvent habitEvent = new HabitEvent(HabitName, commentStr, imagePath, Long,Lat);
         //Bundle up the habit event object and return to the view habit activity
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
