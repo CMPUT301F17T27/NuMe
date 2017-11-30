@@ -21,8 +21,7 @@
             android:ems="10"
             android:hint="@string/title"
             android:inputType="textPersonName"
-            android:maxLength="20"
-            android:text="Test" />
+            android:maxLength="20" />
 
         <EditText
             android:id="@+id/reason"
@@ -34,8 +33,7 @@
             android:ems="10"
             android:hint="@string/reason"
             android:inputType="textPersonName"
-            android:maxLength="30"
-            android:text="TEst Reason" />
+            android:maxLength="30" />
 
         <EditText
             android:id="@+id/date"
@@ -47,8 +45,7 @@
             android:layout_weight="0.13"
             android:ems="10"
             android:hint="@string/startDate"
-            android:inputType="date"
-            android:text="22/08/2017" />
+            android:inputType="date" />
 
         <TextView
             android:id="@+id/freqtitle"

@@ -79,43 +79,63 @@ public class AddHabitActivity extends AppCompatActivity {
                 String startDateStr = date.getText().toString();
 
                 //Format the date from the text field
-                String[] startDateArr = startDateStr.split("/");
-                int day = Integer.parseInt(startDateArr[0]);
-                int month = Integer.parseInt(startDateArr[1]);
-                int year = Integer.parseInt(startDateArr[2]);
-                Calendar calendar = Calendar.getInstance();
-                calendar.clear();
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month-1);
-                calendar.set(Calendar.DATE, day);
-                Date startDate = calendar.getTime();
+                try {
+                    String[] startDateArr = startDateStr.split("/");
+                    int day = Integer.parseInt(startDateArr[0]);
+                    int month = Integer.parseInt(startDateArr[1]);
+                    int year = Integer.parseInt(startDateArr[2]);
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.clear();
+                    calendar.set(Calendar.YEAR, year);
+                    calendar.set(Calendar.MONTH, month - 1);
+                    calendar.set(Calendar.DATE, day);
+                    Date startDate = calendar.getTime();
 
-                //Add checked dates to frequencyList
-                if (sun.isChecked()){ frequencyList.add("Sunday");}
-                if (mon.isChecked()){ frequencyList.add("Monday");}
-                if (tues.isChecked()){ frequencyList.add("Tuesday");}
-                if (wed.isChecked()){ frequencyList.add("Wednesday");}
-                if (thurs.isChecked()){ frequencyList.add("Thursday");}
-                if (fri.isChecked()){ frequencyList.add("Friday");}
-                if (sat.isChecked()){ frequencyList.add("Saturday");}
+                    //Add checked dates to frequencyList
+                    if (sun.isChecked()) {
+                        frequencyList.add("Sunday");
+                    }
+                    if (mon.isChecked()) {
+                        frequencyList.add("Monday");
+                    }
+                    if (tues.isChecked()) {
+                        frequencyList.add("Tuesday");
+                    }
+                    if (wed.isChecked()) {
+                        frequencyList.add("Wednesday");
+                    }
+                    if (thurs.isChecked()) {
+                        frequencyList.add("Thursday");
+                    }
+                    if (fri.isChecked()) {
+                        frequencyList.add("Friday");
+                    }
+                    if (sat.isChecked()) {
+                        frequencyList.add("Saturday");
+                    }
 
 
-                //Check inputs and prompt for changes or return to HabitListActivity
-                if(frequencyList.size() == 0){
-                    Toast.makeText(AddHabitActivity.this, "No dates have been selected for frequency", Toast.LENGTH_SHORT).show();
-                }
+                    //Check inputs and prompt for changes or return to HabitListActivity
+                    if (frequencyList.size() == 0) {
+                        Toast.makeText(AddHabitActivity.this, "No dates have been selected for frequency", Toast.LENGTH_SHORT).show();
+                    } else if( titleStr.length() ==0) {
+                        Toast.makeText(AddHabitActivity.this, "Please enter a Habit Title", Toast.LENGTH_SHORT).show();
+                    }else if(reasonStr.length() ==0) {
+                        Toast.makeText(AddHabitActivity.this, "Please enter a Habit Reason", Toast.LENGTH_SHORT).show();
+                    }else {
+                        //Create a new habit object with the UI entries
+                        Habit habit = new Habit(titleStr, reasonStr, startDate, frequencyList);
 
-                else {
-                    //Create a new habit object with the UI entries
-                    Habit habit = new Habit(titleStr, reasonStr, startDate, frequencyList);
-
-                    //Bundle up the habit object and return to habit list activity
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("HABIT", habit);
-                    intent.putExtras(bundle);
-                    setResult(HABIT_ADDED_RESULT_CODE, intent);
-                    finish();
+                        //Bundle up the habit object and return to habit list activity
+                        Intent intent = new Intent();
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("HABIT", habit);
+                        intent.putExtras(bundle);
+                        setResult(HABIT_ADDED_RESULT_CODE, intent);
+                        finish();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(AddHabitActivity.this, "Please use DD/MM/YYYY format for Start Date", Toast.LENGTH_SHORT).show();
                 }
             }
         });

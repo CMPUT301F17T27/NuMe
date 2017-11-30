@@ -135,6 +135,9 @@ public class HabitListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.logout) {
+            deleteFile("profile.sav");
+            deleteFile("events.sav");
+            deleteFile("event.sav");
             Intent intent = new Intent(HabitListActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();

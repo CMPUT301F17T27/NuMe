@@ -144,7 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Long = location.getLongitude();
                     Lat = location.getLatitude();
                     LatLng CurrentLocation = new LatLng(Lat, Long);
-                    Log.d("...", "onSuccess: "+CurrentLocation);
+                    //Log.d("...", "onSuccess: "+CurrentLocation);
                     mMap.addMarker(new MarkerOptions().position(CurrentLocation)
                             .title("Current Location"));
                     //Marker marker = mMap.addMarker(new MarkerOptions().position(edmonton).title("Current Location"));
