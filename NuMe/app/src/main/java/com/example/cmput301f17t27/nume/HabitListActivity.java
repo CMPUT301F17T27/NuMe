@@ -26,11 +26,13 @@ public class HabitListActivity extends AppCompatActivity
     //Request codes for startingActivityForResult
     protected static final int ADD_HABIT_REQUEST_CODE = 100;
     protected static final int VIEW_HABIT_REQUEST_CODE = 101;
+    protected static final int EDIT_PROFILE_REQUEST_CODE = 102;
     //Return codes for startingActivityForResult
     protected static final int NO_ACTION_RESULT_CODE = 0;
     protected static final int HABIT_ADDED_RESULT_CODE = 1;
     protected static final int HABIT_DELETED_RESULT_CODE = 2;
     protected static final int HABIT_CHANGED_RESULT_CODE = 3;
+    protected static final int PROFILE_CHANGED_RESULT_CODE = 4;
 
     //Profile var declaration
     private Profile profile;
@@ -199,10 +201,7 @@ public class HabitListActivity extends AppCompatActivity
 
         else if (id == R.id.editprofilebutton) {
             Intent intent = new Intent(HabitListActivity.this, EditProfileActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Profile", profile);
-            intent.putExtras(bundle);
-            startActivity(intent);
+            startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE);
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -248,6 +247,24 @@ public class HabitListActivity extends AppCompatActivity
             }
 
             //If the user didn't change the habit in any way
+            else if(resultCode == NO_ACTION_RESULT_CODE) {
+                //Do nothing
+            }
+        }
+
+        // If you're returning from the EditProfileActivity
+        else if(requestCode == EDIT_PROFILE_REQUEST_CODE) {
+            // if the user changed their full name
+            if(resultCode == PROFILE_CHANGED_RESULT_CODE) {
+                Bundle bundle = data.getExtras();
+                String newName = bundle.getString("newName");
+                profile.setName(newName);
+                adapter.notifyDataSetChanged();
+                fullName.setText(newName);
+                SaveLoadController.saveProfileToFile(HabitListActivity.this, profile);
+            }
+
+            // if the user didn't change their profile in any way
             else if(resultCode == NO_ACTION_RESULT_CODE) {
                 //Do nothing
             }
