@@ -265,6 +265,11 @@ public class HabitListActivity extends AppCompatActivity
                 profile.setHabit(index, habit);
                 adapter.notifyDataSetChanged();
                 SaveLoadController.saveProfileToFile(HabitListActivity.this, profile);
+                if(isItToday) {
+                    adapter= new HabitAdapter(this, profile.getTodaysHabitList());
+                    habitList.setAdapter(adapter);
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
 
             //If the user deleted the habit
