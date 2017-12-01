@@ -2,6 +2,7 @@ package com.example.cmput301f17t27.nume;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -40,6 +41,9 @@ public class HabitListActivity extends AppCompatActivity
     //Index for which habit has been clicked in the list
     private int index;
 
+    //Bool for finding out if you're on today's events or not
+    private boolean isItToday;
+
     //UI declarations
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -56,6 +60,9 @@ public class HabitListActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_sidebar);
+
+        //make isItToday (meaning today's events) false
+        isItToday = false;
 
         //Un-bundle the profile sent from the login screen (The one on elastic search)
         Intent intent = getIntent();
@@ -96,11 +103,23 @@ public class HabitListActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Save the index of the habit that was pressed
                 index = position;
+                Habit habit;
+
+                //check if we're on today's events
+                if(isItToday) {
+                    ArrayList<Habit> todaysList = profile.getTodaysHabitList();
+                    habit = todaysList.get(index);
+                    index = profile.getPosition(habit);
+                }
+                else {
+                    habit = profile.getHabit(index);
+                }
+                Log.d("GGG", Integer.toString(index));
 
                 //Bundle up the habit and start the view habit activity
                 Intent intent = new Intent(HabitListActivity.this, ViewHabitActivity.class);
                 Bundle bundle = new Bundle();
-                Habit habit = profile.getHabit(position);
+                // Habit habit = profile.getHabit(position);
                 bundle.putSerializable("HABIT", habit);
                 bundle.putInt("INDEX", index);
                 intent.putExtras(bundle);
@@ -168,6 +187,7 @@ public class HabitListActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.habitsbutton) {
+            isItToday = false;
             adapter= new HabitAdapter(this, profile.getHabitList());
             habitList.setAdapter(adapter);
             drawer.closeDrawer(GravityCompat.START);
@@ -185,6 +205,7 @@ public class HabitListActivity extends AppCompatActivity
 
         }else if(id == R.id.todayshabitsbutton){
             //HabitAdapter UpdatingHabitAdapter = new HabitAdapter(this, profile.getTodaysHabitList());
+            isItToday = true;
             adapter= new HabitAdapter(this, profile.getTodaysHabitList());
             habitList.setAdapter(adapter);
             //habitList.setAdapter(UpdatingHabitAdapter);
@@ -251,6 +272,11 @@ public class HabitListActivity extends AppCompatActivity
                 profile.deleteHabit(index);
                 adapter.notifyDataSetChanged();
                 SaveLoadController.saveProfileToFile(HabitListActivity.this, profile);
+                if(isItToday) {
+                    adapter= new HabitAdapter(this, profile.getTodaysHabitList());
+                    habitList.setAdapter(adapter);
+                    drawer.closeDrawer(GravityCompat.START);
+                }
             }
 
             //If the user didn't change the habit in any way

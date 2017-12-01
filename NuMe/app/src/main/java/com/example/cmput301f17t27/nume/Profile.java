@@ -128,7 +128,15 @@ public class Profile implements Serializable {
         habitList.set(index, habit);
     }
 
-
+    /**
+     * Takes a habit, checks if it is in the habit list, and gives the position.
+     */
+    public int getPosition(Habit habit) {
+        if(habitList.contains(habit)) {
+            Log.d("FFF", Integer.toString(habitList.indexOf(habit)));
+            return habitList.indexOf(habit);
+        } else { return -1; }
+    }
 
     /**
      * Returns a sorted list of all events of a profile
