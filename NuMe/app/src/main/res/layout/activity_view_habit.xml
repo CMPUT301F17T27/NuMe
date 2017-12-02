@@ -69,6 +69,12 @@
         android:layout_weight="0.42" />
 
     <Button
+        android:id="@+id/statsbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/stats"/>
+
+    <Button
         android:id="@+id/addeventbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

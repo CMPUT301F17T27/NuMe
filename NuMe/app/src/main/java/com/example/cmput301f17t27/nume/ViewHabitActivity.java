@@ -46,6 +46,7 @@ public class ViewHabitActivity extends AppCompatActivity {
     private Button editButton;
     private Button deleteButton;
     private Button addEventButton;
+    private Button statsButton;
 
 
     @Override
@@ -71,6 +72,7 @@ public class ViewHabitActivity extends AppCompatActivity {
         editButton = (Button) findViewById(R.id.editbutton);
         deleteButton = (Button) findViewById(R.id.deletebutton);
         addEventButton = (Button) findViewById(R.id.addeventbutton);
+        statsButton = (Button) findViewById(R.id.statsbutton);
 
         //Setup the toolbar
         setSupportActionBar(toolbar);
@@ -134,6 +136,18 @@ public class ViewHabitActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 setResult(HABIT_DELETED_RESULT_CODE, intent);
                 finish();
+            }
+        });
+
+        //Go to the stats for the habit
+        statsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewHabitActivity.this, HabitStatsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("HABIT", habit);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
