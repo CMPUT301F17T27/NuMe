@@ -17,6 +17,7 @@ public class ViewHabitActivity extends AppCompatActivity {
     protected static final int ADD_EVENT_REQUEST_CODE = 100;
     protected static final int VIEW_EVENT_REQUEST_CODE = 101;
     protected static final int EDIT_HABIT_REQUEST_CODE = 102;
+    protected static final int VIEW_STATS_REQUEST_CODE = 103;
     //Return codes for startingActivityForResult
     protected static final int NO_ACTION_RESULT_CODE = 0;
     protected static final int HABIT_DELETED_RESULT_CODE = 2;
@@ -147,7 +148,7 @@ public class ViewHabitActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("HABIT", habit);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent, VIEW_STATS_REQUEST_CODE);
             }
         });
     }
@@ -289,6 +290,11 @@ public class ViewHabitActivity extends AppCompatActivity {
             else if(resultCode == NO_ACTION_RESULT_CODE) {
                 //Do nothing
             }
+        }
+
+        //if you're returning from the HabitStats activity
+        else if(requestCode == VIEW_STATS_REQUEST_CODE) {
+            // do nothing
         }
     }
 
