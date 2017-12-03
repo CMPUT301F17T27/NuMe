@@ -50,4 +50,5 @@
     <string name="editProfile">Edit Profile</string>
     <string name="newName">New Full Name</string>
     <string name="stats">View Stats</string>
+    <string name="sevenDays">Events Added in the Last 7 Days:</string>
 </resources>
