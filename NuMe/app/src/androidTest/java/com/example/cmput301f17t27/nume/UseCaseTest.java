@@ -178,6 +178,7 @@ public class UseCaseTest extends ActivityInstrumentationTestCase2<LoginActivity>
         solo.assertCurrentActivity("Wrong Activity", EditEventActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.comment_edit));
         solo.enterText((EditText) solo.getView(R.id.comment_edit), "test edit");
+        solo.clickOnView(solo.getView(R.id.location));
         solo.clickOnButton("Save");
         solo.waitForText("Back");
         solo.assertCurrentActivity("Wrong Activity", ViewEventActivity.class);
@@ -201,6 +202,69 @@ public class UseCaseTest extends ActivityInstrumentationTestCase2<LoginActivity>
         solo.clickInList(0);
         solo.waitForText("Events:");
         solo.assertCurrentActivity("Wrong Activity", ViewHabitActivity.class);
+    }
+
+    public void testFBEventSearch() {
+        solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.username));
+        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.clickOnButton("Login");
+        solo.waitForText("Habits");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+        solo.clickOnImageButton(0);
+        solo.sleep(500);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_CENTER);
+        solo.waitForActivity("searchEventActivity");
+        solo.assertCurrentActivity("Wrong Activity", searchEventActivity.class);
+    }
+
+    public void testFCMaps() {
+        solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.username));
+        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.clickOnButton("Login");
+        solo.waitForText("Habits");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+        solo.clickOnImageButton(0);
+        solo.sleep(500);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_CENTER);
+        solo.waitForActivity("MapsActivity");
+        solo.clickOnView(solo.getView(R.id.radToggle));
+        solo.sleep(500);
+        solo.assertCurrentActivity("Wrong Activity", MapsActivity.class);
+    }
+
+    public void testDEEditProfile() {
+        solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.username));
+        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.clickOnButton("Login");
+        solo.waitForText("Habits");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+        solo.clickOnImageButton(0);
+        solo.sleep(500);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_CENTER);
+        solo.waitForActivity("EditProfileActivity");
+        solo.enterText((EditText) solo.getView(R.id.newName), "Intent Edited");
+        solo.clickOnButton("Save");
+        solo.waitForActivity("HabitListActivity");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
     }
 
     @Override
