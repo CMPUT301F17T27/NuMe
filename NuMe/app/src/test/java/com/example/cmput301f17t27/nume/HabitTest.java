@@ -49,6 +49,31 @@ public class HabitTest  {
     }
 
     @Test
+    public void testDeleteByIndex() throws Exception {
+        Date dateToStart = new Date();
+        ArrayList<String> frequency = new ArrayList<>();
+        frequency.add("Monday");
+        Habit habit = new Habit("Test", "Test", dateToStart, frequency);
+        HabitEvent event1 = new HabitEvent();
+        HabitEvent event2 = new HabitEvent();
+        habit.addEvent(event1);
+        habit.addEvent(event2);
+        habit.deleteEvent(0);
+        assertFalse(habit.hasEvent(event1));
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        Date dateToStart = new Date();
+        ArrayList<String> frequency = new ArrayList<>();
+        frequency.add("Monday");
+        Habit habit = new Habit("Test", "Test", dateToStart, frequency);
+        String habitString = habit.toString();
+        String habitExpected = "Habit: Test\nReason:Test";
+        assertEquals(habitString, habitExpected);
+    }
+
+    @Test
     public void testViewStats() throws Exception{
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
