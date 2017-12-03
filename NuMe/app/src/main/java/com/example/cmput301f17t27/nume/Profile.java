@@ -133,7 +133,6 @@ public class Profile implements Serializable {
      */
     public int getPosition(Habit habit) {
         if(habitList.contains(habit)) {
-            Log.d("FFF", Integer.toString(habitList.indexOf(habit)));
             return habitList.indexOf(habit);
         } else { return -1; }
     }

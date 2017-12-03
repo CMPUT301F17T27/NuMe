@@ -360,6 +360,26 @@ public class ProfileTest {
         assertEquals(test.habitHistory(habit2, "search term"), testEvents);
     }
 
+    @Test
+    public void testGetPosition() {
+        Profile test = new Profile("Test", "Test");
+        Date dateToStart = new Date();
+        ArrayList<String> frequency = new ArrayList<>();
+        frequency.add("Monday");
+        Habit habit1 = new Habit("Test 1", "Test 1", dateToStart, frequency);
+        Habit habit2 = new Habit("Test 2", "Test 2", dateToStart, frequency);
+        Habit habit3 = new Habit("Test 3", "Test 3", dateToStart, frequency);
+        test.addHabit(habit1);
+        test.addHabit(habit2);
+        test.addHabit(habit3);
+        int zero = test.getPosition(habit1);
+        int one = test.getPosition(habit2);
+        int two = test.getPosition(habit3);
+        assertEquals(zero, 0);
+        assertEquals(one, 1);
+        assertEquals(two, 2);
+    }
+
 
 
 }
