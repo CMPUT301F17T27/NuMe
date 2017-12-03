@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
@@ -12,7 +13,6 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +22,9 @@ public class HabitStatsActivity extends AppCompatActivity {
 
     private Date todaysDate;
     private long daysSince;
+    private long weekNumber;
+    private long remainder;
+    private long freqNumber;
     private String eventNum;
     private String weeklyUpdate;
     private ArrayList<HabitEvent> allEvents = new ArrayList<>();
@@ -29,7 +32,9 @@ public class HabitStatsActivity extends AppCompatActivity {
 
     private TextView eventNumber;
     private TextView eventsThisWeek;
+    private TextView status;
     private GraphView lineGraph;
+    private ImageView statusIndicator;
     private Button backButton;
 
     @Override
@@ -59,6 +64,8 @@ public class HabitStatsActivity extends AppCompatActivity {
         eventNumber = (TextView) findViewById(R.id.eventnumber);
         eventsThisWeek = (TextView) findViewById(R.id.eventsThisWeek);
         lineGraph = (GraphView) findViewById(R.id.graph);
+        status = (TextView) findViewById(R.id.status);
+        statusIndicator = (ImageView) findViewById(R.id.statusIndicator);
         backButton = (Button) findViewById(R.id.backbutton);
 
         if (todaysDate.compareTo(habit.getDateToStart()) < 0) {
@@ -112,27 +119,85 @@ public class HabitStatsActivity extends AppCompatActivity {
         }
         eventsThisWeek.setText(weeklyUpdate);
 
-        int[] reverseWeeklyEvents = new int[7];
-        reverseWeeklyEvents[0] = weeklyEvents[6];
-        reverseWeeklyEvents[1] = weeklyEvents[5];
-        reverseWeeklyEvents[2] = weeklyEvents[4];
-        reverseWeeklyEvents[3] = weeklyEvents[3];
-        reverseWeeklyEvents[4] = weeklyEvents[2];
-        reverseWeeklyEvents[5] = weeklyEvents[1];
-        reverseWeeklyEvents[6] = weeklyEvents[0];
 
 
         int i;
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(0, reverseWeeklyEvents[0]),
-                new DataPoint(1, reverseWeeklyEvents[1]),
-                new DataPoint(2, reverseWeeklyEvents[2]),
-                new DataPoint(3, reverseWeeklyEvents[3]),
-                new DataPoint(4, reverseWeeklyEvents[4]),
-                new DataPoint(5, reverseWeeklyEvents[5]),
-                new DataPoint(6, reverseWeeklyEvents[6])
+                new DataPoint(0, weeklyEvents[6]),
+                new DataPoint(1, weeklyEvents[5]),
+                new DataPoint(2, weeklyEvents[4]),
+                new DataPoint(3, weeklyEvents[3]),
+                new DataPoint(4, weeklyEvents[2]),
+                new DataPoint(5, weeklyEvents[1]),
+                new DataPoint(6, weeklyEvents[0])
         });
         lineGraph.addSeries(series);
+
+        weekNumber = daysSince/7;
+        remainder = daysSince%7;
+        freqNumber = 0;
+        if (habit.getFrequency().contains("Sunday")) {
+            freqNumber += 1;
+        }
+        if (habit.getFrequency().contains("Monday")) {
+            freqNumber += 1;
+        }
+        if (habit.getFrequency().contains("Tuesday")) {
+            freqNumber += 1;
+        }
+        if (habit.getFrequency().contains("Wednesday")) {
+            freqNumber += 1;
+        }
+        if (habit.getFrequency().contains("Thursday")) {
+            freqNumber += 1;
+        }
+        if (habit.getFrequency().contains("Friday")) {
+            freqNumber += 1;
+        }
+        if (habit.getFrequency().contains("Saturday")) {
+            freqNumber += 1;
+        }
+
+        Log.d("Week", Long.toString(weekNumber));
+        Log.d("Freq", Long.toString(freqNumber));
+        Log.d("Events", Integer.toString(weeklyNum));
+        Log.d("All", Integer.toString(allEvents.size()));
+        if(weekNumber == 0) {
+            status.setText("Welcome to this new Habit!");
+            statusIndicator.setImageResource(R.drawable.face1);
+        }
+        else if ((double) allEvents.size() / ((double) freqNumber * (double) weekNumber) >= 0.66 &&
+                (double) weeklyNum / (double) freqNumber >= 0.5) {
+            status.setText("Doing excellent!");
+            statusIndicator.setImageResource(R.drawable.face1);
+        }
+        else if ((double) allEvents.size() / ((double) freqNumber * (double) weekNumber) >= 0.66 &&
+                (double) weeklyNum / (double) freqNumber < 0.5 &&
+                (double) weeklyNum / (double) freqNumber > 0) {
+            status.setText("Add some more events!");
+            statusIndicator.setImageResource(R.drawable.face2);
+        }
+        else if ((double) allEvents.size() / ((double) freqNumber * (double) weekNumber) >= 0.66 &&
+                weeklyNum == 0) {
+            status.setText("Add an event this week!");
+            statusIndicator.setImageResource(R.drawable.face3);
+        }
+        else if ((double) allEvents.size() / ((double) freqNumber * (double) weekNumber) < 0.66 &&
+                (double) allEvents.size() / ((double) freqNumber * (double) weekNumber) >= 0.33 &&
+                weeklyNum >= freqNumber) {
+            status.setText("Great week, but build up your habit over time!");
+            statusIndicator.setImageResource(R.drawable.face2);
+        }
+        else if ((double) allEvents.size() / ((double) freqNumber * (double) weekNumber) < 0.66 &&
+                (double) allEvents.size() / ((double) freqNumber * (double) weekNumber) >= 0.33 &&
+                weeklyNum < freqNumber) {
+            status.setText("Add events to reach your weekly goal!");
+            statusIndicator.setImageResource(R.drawable.face3);
+        }
+        else {
+            status.setText("Need to build up your habit!");
+            statusIndicator.setImageResource(R.drawable.face3);
+        }
 
 
         backButton.setOnClickListener(new View.OnClickListener() {
