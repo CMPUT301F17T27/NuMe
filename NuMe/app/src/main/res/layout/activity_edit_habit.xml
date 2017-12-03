@@ -11,7 +11,7 @@
         android:weightSum="1">
 
         <EditText
-            android:id="@+id/title"
+            android:id="@+id/title_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -23,7 +23,7 @@
             android:maxLength="20" />
 
         <EditText
-            android:id="@+id/reason"
+            android:id="@+id/reason_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -34,7 +34,7 @@
             android:maxLength="30" />
 
         <EditText
-            android:id="@+id/date"
+            android:id="@+id/date_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"

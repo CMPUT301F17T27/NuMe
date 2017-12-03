@@ -13,14 +13,14 @@
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <EditText
-        android:id="@+id/comment"
+        android:id="@+id/comment_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.03"
         android:ems="10"
         android:hint="Comment"
-        android:maxLength="20"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:maxLength="20" />
 
     <Switch
         android:id="@+id/location"
