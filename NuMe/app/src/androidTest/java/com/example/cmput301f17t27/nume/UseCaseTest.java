@@ -235,6 +235,7 @@ public class UseCaseTest extends ActivityInstrumentationTestCase2<LoginActivity>
         solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
         solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
         solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
         solo.sendKey(KeyEvent.KEYCODE_DPAD_CENTER);
         solo.waitForActivity("MapsActivity");
         solo.clickOnView(solo.getView(R.id.radToggle));
@@ -265,6 +266,21 @@ public class UseCaseTest extends ActivityInstrumentationTestCase2<LoginActivity>
         solo.clickOnButton("Save");
         solo.waitForActivity("HabitListActivity");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+    }
+
+    public void testFDHabitStats() {
+        solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.username));
+        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.clickOnButton("Login");
+        solo.waitForText("Habits");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+        solo.clickInList(0);
+        solo.waitForText("Events");
+        solo.assertCurrentActivity("Wrong Activity", ViewHabitActivity.class);
+        solo.clickOnButton("View Stats");
+        solo.waitForText("Events Added in the Last 7 Days:");
+        solo.assertCurrentActivity("Wrong Activity", HabitStatsActivity.class);
     }
 
     @Override
