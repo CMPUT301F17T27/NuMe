@@ -32,7 +32,7 @@ public class EditProfileActivity extends AppCompatActivity {
         profile = (Profile) bundle.getSerializable("PROFILE");
 
         //UI definitions
-        fullName = (EditText) findViewById(R.id.fullname);
+        fullName = (EditText) findViewById(R.id.fullname_edit);
         saveButton = (Button) findViewById(R.id.savebutton);
         cancelButton = (Button) findViewById(R.id.cancelbutton);
 
