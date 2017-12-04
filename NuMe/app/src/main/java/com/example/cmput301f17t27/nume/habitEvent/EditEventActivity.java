@@ -64,7 +64,7 @@ public class EditEventActivity extends AppCompatActivity {
         habitEvent = (HabitEvent) bundle.getSerializable("EVENT");
 
         //UI definitions
-        comment = (EditText) findViewById(R.id.comment);
+        comment = (EditText) findViewById(R.id.comment_edit);
         image = (ImageView) findViewById(R.id.image);
         location = (Switch) findViewById(R.id.location);
         saveButton = (Button) findViewById(R.id.savebutton);

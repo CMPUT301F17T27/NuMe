@@ -11,7 +11,7 @@
         android:weightSum="1">
 
         <EditText
-            android:id="@+id/title"
+            android:id="@+id/title_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -26,7 +26,7 @@
             android:textStyle="italic" />
 
         <EditText
-            android:id="@+id/reason"
+            android:id="@+id/reason_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -40,7 +40,7 @@
             android:textStyle="italic" />
 
         <EditText
-            android:id="@+id/date"
+            android:id="@+id/date_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"

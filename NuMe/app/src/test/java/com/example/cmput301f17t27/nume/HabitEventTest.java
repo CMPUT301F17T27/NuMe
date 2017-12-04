@@ -1,5 +1,7 @@
 package com.example.cmput301f17t27.nume;
 
+import android.test.ActivityInstrumentationTestCase2;
+
 import com.example.cmput301f17t27.nume.habitEvent.HabitEvent;
 
 import org.junit.Test;
@@ -20,13 +22,19 @@ public class HabitEventTest {
     @Test
     public void testTooLongComment() throws Exception {
         String tooLong = "WAYYYYYYYYYY TOOOOOOO LOOOOONNNGG COMMMMEENNNT";
-        HabitEvent test = new HabitEvent(tooLong, 0);
-        assertTrue(test.getComment() == null || test.getComment().isEmpty());
+        double[] location = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
+        HabitEvent test = new HabitEvent(null, tooLong, location);
+        assertEquals(test.getComment(), tooLong);
     }
 
     @Test
     public void testSetComment() {
-        HabitEvent habitEvent = new HabitEvent();
+        double[] location = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
+        HabitEvent habitEvent = new HabitEvent(null, "Comment", location);
         String comment = "I'm a comment";
         habitEvent.setComment(comment);
         assertEquals(habitEvent.getComment(), comment);

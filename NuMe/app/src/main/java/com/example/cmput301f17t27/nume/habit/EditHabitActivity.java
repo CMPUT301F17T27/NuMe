@@ -64,9 +64,9 @@ public class EditHabitActivity extends AppCompatActivity {
         frequencyList = habit.getFrequency();
 
         //UI definitions
-        title = (EditText) findViewById(R.id.title);
-        reason = (EditText) findViewById(R.id.reason);
-        date = (EditText) findViewById(R.id.date);
+        title = (EditText) findViewById(R.id.title_edit);
+        reason = (EditText) findViewById(R.id.reason_edit);
+        date = (EditText) findViewById(R.id.date_edit);
         sun = (CheckBox) findViewById(R.id.sunday);
         mon = (CheckBox) findViewById(R.id.monday);
         tue = (CheckBox) findViewById(R.id.tuesday);
