@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import com.example.cmput301f17t27.nume.account.CreateAccountActivity;
 import com.example.cmput301f17t27.nume.account.LoginActivity;
+import com.example.cmput301f17t27.nume.follows.FollowersActivity;
+import com.example.cmput301f17t27.nume.follows.FollowingActivity;
 import com.example.cmput301f17t27.nume.habit.AddHabitActivity;
 import com.example.cmput301f17t27.nume.habit.EditHabitActivity;
 import com.example.cmput301f17t27.nume.habit.HabitListActivity;
@@ -17,6 +19,7 @@ import com.example.cmput301f17t27.nume.habitEvent.EditEventActivity;
 import com.example.cmput301f17t27.nume.habitEvent.EventSearchActivity;
 import com.example.cmput301f17t27.nume.habitEvent.ViewEventActivity;
 import com.example.cmput301f17t27.nume.various.MapsActivity;
+import com.example.cmput301f17t27.nume.various.NotificationsActivity;
 import com.robotium.solo.Solo;
 
 import org.junit.Test;
@@ -44,7 +47,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testCLogin() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -64,7 +67,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
         solo.clickOnButton("Create Account");
         solo.waitForText("Cancel");
         solo.assertCurrentActivity("Wrong Activity", CreateAccountActivity.class);
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.enterText((EditText) solo.getView(R.id.fullname), "Intent Test");
         solo.clickOnButton("Create Account");
         /*
@@ -81,7 +84,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testEAddHabit() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -106,7 +109,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testJDeleteHabit() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -120,7 +123,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testFAddHabitEvent() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -130,7 +133,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
         solo.clickOnButton("Add Event");
         solo.waitForText("Use Location");
         solo.assertCurrentActivity("Wrong Activity", AddEventActivity.class);
-        solo.enterText((EditText) solo.getView(R.id.comment), "testEvent");
+        solo.enterText((EditText) solo.getView(R.id.comment_add), "testEvent");
         solo.clickOnButton("Add");
         solo.waitForText("Events");
         solo.assertCurrentActivity("Wrong Activity", ViewHabitActivity.class);
@@ -139,7 +142,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testIDeleteEvent() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -157,7 +160,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testGEditHabit() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -177,7 +180,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testHEditHabitEvent() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -201,7 +204,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testFATodaysEvents() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -215,7 +218,6 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
         solo.assertCurrentActivity("Wrong Activity", ViewHabitActivity.class);
     }
 
-    /*
     public void testFBEventSearch() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
@@ -232,12 +234,11 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
         solo.waitForActivity("EventSearchActivity");
         solo.assertCurrentActivity("Wrong Activity", EventSearchActivity.class);
     }
-    */
 
     public void testFCMaps() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -257,12 +258,14 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testDEEditProfile() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
         solo.clickOnImageButton(0);
         solo.sleep(500);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
         solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
         solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
         solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
@@ -283,7 +286,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testFDHabitStats() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -301,7 +304,7 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
     public void testZLogout() {
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.username));
-        solo.enterText((EditText) solo.getView(R.id.username), "intentTest");
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
         solo.clickOnButton("Login");
         solo.waitForText("Habits");
         solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
@@ -310,6 +313,66 @@ public class UseCasesTest extends ActivityInstrumentationTestCase2<LoginActivity
         solo.clickOnMenuItem("Logout");
         solo.waitForActivity("LoginActivity");
         solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+    }
+
+    @Test
+    public void testKNotifications() {
+        solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.username));
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
+        solo.clickOnButton("Login");
+        solo.waitForText("Habits");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+        solo.clickOnImageButton(0);
+        solo.sleep(500);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_CENTER);
+        solo.waitForActivity("NotificationsActivity");
+        solo.assertCurrentActivity("Wrong Activity", NotificationsActivity.class);
+    }
+
+    @Test
+    public void testLFollowers() {
+        solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.username));
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
+        solo.clickOnButton("Login");
+        solo.waitForText("Habits");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+        solo.clickOnImageButton(0);
+        solo.sleep(500);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_CENTER);
+        solo.waitForActivity("FollowersActivity");
+        solo.assertCurrentActivity("Wrong Activity", FollowersActivity.class);
+    }
+
+    @Test
+    public void testMFollowing() {
+        solo.assertCurrentActivity("Wrong Activity", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.username));
+        solo.enterText((EditText) solo.getView(R.id.username), "matt");
+        solo.clickOnButton("Login");
+        solo.waitForText("Habits");
+        solo.assertCurrentActivity("Wrong Activity", HabitListActivity.class);
+        solo.clickOnImageButton(0);
+        solo.sleep(500);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_DOWN);
+        solo.sendKey(KeyEvent.KEYCODE_DPAD_CENTER);
+        solo.waitForActivity("FollowingActivity");
+        solo.assertCurrentActivity("Wrong Activity", FollowingActivity.class);
     }
 
     @Override

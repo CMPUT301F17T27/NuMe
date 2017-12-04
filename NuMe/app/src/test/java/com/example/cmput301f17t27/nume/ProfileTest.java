@@ -389,6 +389,25 @@ public class ProfileTest {
         assertEquals(test.habitHistory(habit2, "search term"), testEvents);
     }
 
+    @Test
+    public void testGetTodaysList() {
+        Profile test = new Profile("Test", "Test");
+        Date dateToStart = new Date();
+        ArrayList<String> frequency = new ArrayList<>();
+        frequency.add("Sunday");
+        frequency.add("Monday");
+        frequency.add("Tuesday");
+        frequency.add("Wednesday");
+        frequency.add("Thursday");
+        frequency.add("Friday");
+        frequency.add("Saturday");
+        Habit habit1 = new Habit("Test 1", "Test 1", dateToStart, frequency);
+        test.addHabit(habit1);
+        ArrayList<Habit> testHabit = new ArrayList<>();
+        testHabit.add(habit1);
+        assertEquals(testHabit, test.getTodaysHabitList());
+    }
+
 
 
 

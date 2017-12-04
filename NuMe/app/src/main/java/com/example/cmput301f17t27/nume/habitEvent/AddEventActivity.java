@@ -67,7 +67,7 @@ public class AddEventActivity extends AppCompatActivity {
 
         //UI definitions
         image = (ImageView) findViewById(R.id.image);
-        comment = (EditText) findViewById(R.id.comment);
+        comment = (EditText) findViewById(R.id.comment_add);
         location = (Switch) findViewById(R.id.location);
         addButton = (Button) findViewById(R.id.addbutton);
         cancelButton = (Button) findViewById(R.id.cancelbutton);
