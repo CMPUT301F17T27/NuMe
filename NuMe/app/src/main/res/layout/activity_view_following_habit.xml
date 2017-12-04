@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_weight="0.14"
+        android:text="@string/title" />
+
+    <TextView
+        android:id="@+id/reason"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.16"
+        android:text="@string/reason" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_weight="0.14"
+        android:text="@string/startDate" />
+
+    <TextView
+        android:id="@+id/frequency"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="0.10"
+        android:text="@string/frequencies" />
+
+    <TextView
+        android:id="@+id/eventtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mostRecentEvent"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:layout_weight="0.14"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.14"
+        android:text="@string/comment" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.14"
+        android:text="@string/location" />
+
+    <Button
+        android:id="@+id/backbutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_weight="0.14"
+        android:background="@color/colorAccent"
+        android:text="@string/back" />
+
+</LinearLayout>
+

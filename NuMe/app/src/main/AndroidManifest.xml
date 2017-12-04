@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cmput301f17t27.nume">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HabitListActivity"
+            android:label="@string/habits"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddHabitActivity"
+            android:label="@string/addAHabit" />
+        <activity
+            android:name=".ViewHabitActivity"
+            android:label="@string/viewHabit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddEventActivity"
+            android:label="@string/addAnEvent" />
+        <activity
+            android:name=".EditEventActivity"
+            android:label="@string/editEvent" />
+        <activity
+            android:name=".EditHabitActivity"
+            android:label="@string/editHabit" />
+        <activity
+            android:name=".ViewEventActivity"
+            android:label="@string/viewEvent" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:label="@string/createAccount" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".EventSearchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:label="@string/editProfile" />
+        <activity
+            android:name=".FollowingActivity"
+            android:label="@string/following" />
+        <activity
+            android:name=".ProfileSearchActivity"
+            android:label="@string/searchPeople" />
+        <activity
+            android:name=".FollowersActivity"
+            android:label="@string/followers" />
+        <activity
+            android:name=".ViewFollowingHabitActivity"
+            android:label="@string/viewHabit" />
+        <activity
+            android:name=".NotificationsActivity"
+            android:label="@string/notifications" />
+        <activity android:name=".HabitStatsActivity"></activity>
+    </application>
+
+</manifest>

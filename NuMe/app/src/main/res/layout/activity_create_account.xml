@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.57"
+        android:fontFamily="@font/pt_sans_bold"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="82sp"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.08"
+        android:ems="10"
+        android:fontFamily="@font/pt_sans_italic"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.07"
+        android:ems="10"
+        android:fontFamily="@font/pt_sans_italic"
+        android:hint="@string/fullName"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/createbutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="@string/createAccount"
+        android:textSize="24sp"
+        android:typeface="monospace" />
+
+    <Button
+        android:id="@+id/cancelbutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="@string/cancel"
+        android:textSize="24sp"
+        android:typeface="monospace" />
+</LinearLayout>
+

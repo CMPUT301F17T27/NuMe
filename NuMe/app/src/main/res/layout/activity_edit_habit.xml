@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="1dp"
+            android:ems="10"
+            android:fontFamily="@font/pt_sans_italic"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:maxLength="20"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:ems="10"
+            android:fontFamily="@font/pt_sans_italic"
+            android:hint="@string/reason"
+            android:inputType="textPersonName"
+            android:maxLength="30"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="-1dp"
+            android:ems="10"
+            android:fontFamily="@font/pt_sans_italic"
+            android:hint="@string/startDate"
+            android:inputType="date"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/freqtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/pt_sans"
+            android:text="@string/frequency"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/pt_sans_italic"
+                android:text="@string/sunday" />
+
+            <CheckBox
+                android:id="@+id/monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/pt_sans_italic"
+                android:text="@string/monday" />
+
+            <CheckBox
+                android:id="@+id/tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/pt_sans_italic"
+                android:text="@string/tuesday" />
+
+            <CheckBox
+                android:id="@+id/wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/pt_sans_italic"
+                android:text="@string/wednesday" />
+
+            <CheckBox
+                android:id="@+id/thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/pt_sans_italic"
+                android:text="@string/thursday" />
+
+            <CheckBox
+                android:id="@+id/friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/pt_sans_italic"
+                android:text="@string/friday" />
+
+            <CheckBox
+                android:id="@+id/saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/pt_sans_italic"
+                android:text="@string/saturday" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/savebutton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/pt_sans_bold"
+            android:text="@string/save"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/cancelbutton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorAccent"
+            android:fontFamily="@font/pt_sans_bold"
+            android:text="@string/cancel"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</LinearLayout>
