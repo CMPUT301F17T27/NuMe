@@ -53,7 +53,13 @@ public class ViewFollowingHabitActivity extends AppCompatActivity {
         frequency.setText(followingHabit.frequency.toString());
         if(followingHabit.habitEvent != null) {
             comment.setText(followingHabit.habitEvent.getComment());
-            location.setText(followingHabit.habitEvent.getLocation().toString());
+            double[] loc = followingHabit.habitEvent.getLocation();
+            if(loc ==null){
+                location.setText("Location not used");
+            }else{
+                location.setText(followingHabit.habitEvent.getLocation().toString());
+            }
+
         }
         else {
             comment.setText("");

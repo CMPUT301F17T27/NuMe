@@ -22,7 +22,6 @@ import java.util.Date;
  * @version 0.1
 *  @see HabitListActivity
  * @since 0.1
-* todo Remove the Default Values on the AddHabit XML
 * */
 public class AddHabitActivity extends AppCompatActivity {
     //Return codes for startingActivityForResult

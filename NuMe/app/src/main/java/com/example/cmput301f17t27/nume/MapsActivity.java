@@ -25,6 +25,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import org.apache.commons.lang3.ObjectUtils;
+
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -32,6 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private FusedLocationProviderClient mFusedLocationClient;
     //User Info
     private Profile profile;
+    private ArrayList<SearchEvent> filteredEventList;
     private ArrayList<Habit> habitArrayList = new ArrayList<>();
     private ArrayList<Marker> CurrentEventMarkers = new ArrayList<>();
     private ArrayList<HabitEvent> EventLatLong = new ArrayList<>();
@@ -41,6 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Circle circle;
     private double Long;
     private double Lat;
+    private boolean sEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +56,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         profile = (Profile) bundle.getSerializable("PROFILE");
-        //extract all habitEvent
-        habitArrayList = profile.getHabitList();
-
+        filteredEventList = (ArrayList<SearchEvent>) bundle.getSerializable("SEARCHEVENTS");
+        if(profile==null){
+            sEvent=true;
+            //habitArrayList = filteredEventList;
+        }else {
+            //extract all habitEvent
+            sEvent=false;
+            habitArrayList = profile.getHabitList();
+            ArrayList<Profile> followingProfiles = profile.getFollowingProfiles();
+            for(Profile fProfile : followingProfiles) {
+                for (Habit habit : fProfile.getHabitList()) {
+                    habitArrayList.add(habit);
+                }
+            }
+        }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -86,13 +102,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     for(Marker marker : CurrentEventMarkers) {
                         marker.remove();
                     }
-                    for(HabitEvent event: EventLatLong){
-                        //TODO: event lat lon
-                        LatLng eventLocation = new LatLng(0, 0);
-                        Marker marker = mMap.addMarker(new MarkerOptions().position(eventLocation)
-                                .title(event.getComment()));
-                        CurrentEventMarkers.add(marker);
+                    if(sEvent){
+                        for (SearchEvent searchEvent : filteredEventList){
+                            double[] EventLatLong = searchEvent.location;
+                            if(EventLatLong != null) {
+                                LatLng eventLocation = new LatLng(EventLatLong[0], EventLatLong[1]);
+                                Marker marker = mMap.addMarker(new MarkerOptions().position(eventLocation)
+                                        .title(searchEvent.comment));
+                                CurrentEventMarkers.add(marker);
+                            }
+                        }
+                    }else {
+                        for (HabitEvent event : EventLatLong) {
+                            double[] EventLatLong = event.getLocation();
+                            LatLng eventLocation = new LatLng(EventLatLong[0], EventLatLong[1]);
+                            Marker marker = mMap.addMarker(new MarkerOptions().position(eventLocation)
+                                    .title(event.getComment()));
+                            CurrentEventMarkers.add(marker);
 
+                        }
                     }
                 }
             }
@@ -115,16 +143,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         getLocation();
-        for (Habit habits : habitArrayList) {
-            ArrayList<HabitEvent> habitEvents = habits.getEvents();
-            for (HabitEvent event : habitEvents) {
-                if(event.getLocation() != null) {
-                    //TODO: event lat lon
-                    LatLng eventLocation = new LatLng(0, 0);
+        if(sEvent){
+            for (SearchEvent searchEvent : filteredEventList){
+                double[] EventLatLong = searchEvent.location;
+                if(EventLatLong != null) {
+                    LatLng eventLocation = new LatLng(EventLatLong[0], EventLatLong[1]);
                     Marker marker = mMap.addMarker(new MarkerOptions().position(eventLocation)
-                            .title(event.getComment()));
+                            .title(searchEvent.comment));
                     CurrentEventMarkers.add(marker);
-                    EventLatLong.add(event);
+                }
+            }
+        }else {
+            for (Habit habits : habitArrayList) {
+                ArrayList<HabitEvent> habitEvents = habits.getEvents();
+                for (HabitEvent event : habitEvents) {
+                    if (event.getLocation() != null) {
+                        double[] LatLong = event.getLocation();
+                        LatLng eventLocation = new LatLng(LatLong[0], LatLong[1]);
+                        Marker marker = mMap.addMarker(new MarkerOptions().position(eventLocation)
+                                .title(event.getComment()));
+                        CurrentEventMarkers.add(marker);
+                        EventLatLong.add(event);
+                    }
                 }
             }
 
