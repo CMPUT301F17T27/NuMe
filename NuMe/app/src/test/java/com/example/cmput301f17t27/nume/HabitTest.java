@@ -1,6 +1,7 @@
 package com.example.cmput301f17t27.nume;
 
-import android.test.ActivityInstrumentationTestCase2;
+import com.example.cmput301f17t27.nume.habit.Habit;
+import com.example.cmput301f17t27.nume.habitEvent.HabitEvent;
 
 import org.junit.Test;
 

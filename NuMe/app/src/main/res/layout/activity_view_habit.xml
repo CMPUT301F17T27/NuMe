@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.example.cmput301f17t27.nume.ViewHabitActivity" >
+    tools:context="com.example.cmput301f17t27.nume.habit.ViewHabitActivity" >
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"

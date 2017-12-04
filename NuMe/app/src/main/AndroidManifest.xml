@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name=".account.LoginActivity"
             android:label="@string/login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,30 +25,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HabitListActivity"
+            android:name=".habit.HabitListActivity"
             android:label="@string/habits"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddHabitActivity"
+            android:name=".habit.AddHabitActivity"
             android:label="@string/addAHabit" />
         <activity
-            android:name=".ViewHabitActivity"
+            android:name=".habit.ViewHabitActivity"
             android:label="@string/viewHabit"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddEventActivity"
+            android:name=".habitEvent.AddEventActivity"
             android:label="@string/addAnEvent" />
         <activity
-            android:name=".EditEventActivity"
+            android:name=".habitEvent.EditEventActivity"
             android:label="@string/editEvent" />
         <activity
-            android:name=".EditHabitActivity"
+            android:name=".habit.EditHabitActivity"
             android:label="@string/editHabit" />
         <activity
-            android:name=".ViewEventActivity"
+            android:name=".habitEvent.ViewEventActivity"
             android:label="@string/viewEvent" />
         <activity
-            android:name=".CreateAccountActivity"
+            android:name=".account.CreateAccountActivity"
             android:label="@string/createAccount" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -63,9 +63,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".various.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".EventSearchActivity">
+        <activity android:name=".habitEvent.EventSearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -75,24 +75,24 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".account.EditProfileActivity"
             android:label="@string/editProfile" />
         <activity
-            android:name=".FollowingActivity"
+            android:name=".follows.FollowingActivity"
             android:label="@string/following" />
         <activity
-            android:name=".ProfileSearchActivity"
+            android:name=".follows.ProfileSearchActivity"
             android:label="@string/searchPeople" />
         <activity
-            android:name=".FollowersActivity"
+            android:name=".follows.FollowersActivity"
             android:label="@string/followers" />
         <activity
-            android:name=".ViewFollowingHabitActivity"
+            android:name=".follows.ViewFollowingHabitActivity"
             android:label="@string/viewHabit" />
         <activity
-            android:name=".NotificationsActivity"
+            android:name=".various.NotificationsActivity"
             android:label="@string/notifications" />
-        <activity android:name=".HabitStatsActivity"></activity>
+        <activity android:name=".habit.HabitStatsActivity"></activity>
     </application>
 
 </manifest>
