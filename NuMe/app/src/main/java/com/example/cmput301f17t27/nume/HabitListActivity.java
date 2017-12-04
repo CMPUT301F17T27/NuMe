@@ -185,11 +185,6 @@ public class HabitListActivity extends AppCompatActivity
 
         if (id == R.id.habitsbutton) {
             //Set the sortToday var
-            sortToday = false;
-
-            //Change the menu item text
-            MenuItem sort = (MenuItem) findViewById(R.id.sorttoday);
-            sort.setTitle(R.string.today);
 
             //Close the drawer
             drawer.closeDrawer(GravityCompat.START);

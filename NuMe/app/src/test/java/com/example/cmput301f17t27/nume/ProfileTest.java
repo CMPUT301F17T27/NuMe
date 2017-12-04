@@ -79,6 +79,7 @@ public class ProfileTest {
      * testing the following arraylist Profile class
      * assertSame to test whether the arraylist contain the correct object
      */
+    /*
     @Test
     public void testFollowing(){
         Profile testToFollow = new Profile("Test 1", "Test One");
@@ -87,12 +88,14 @@ public class ProfileTest {
         assertSame(testFollowing.getFollowingList().get(0), testToFollow);
 
     }
+    */
 
     /**
      * Created by xcao2
      * testing the follower arraylist Profile class
      * assertSame to test whether the arraylist contain the correct object
      */
+    /*
     @Test
     public void testFollower(){
         Profile testFollowed = new Profile("Test 1", "Test 1");
@@ -101,6 +104,7 @@ public class ProfileTest {
         assertSame(testFollowed.getFollowerList().get(0), testFollower);
 
     }
+    */
 
     /**
      * Created by mkluk
@@ -110,6 +114,9 @@ public class ProfileTest {
     @Test
     public void testHabitHistory() {
 
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Profile test = new Profile("Test", "Test");
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
@@ -120,12 +127,12 @@ public class ProfileTest {
         test.addHabit(habit1);
         test.addHabit(habit2);
         test.addHabit(habit3);
-        HabitEvent event1 = new HabitEvent();
-        HabitEvent event2 = new HabitEvent();
-        HabitEvent event3 = new HabitEvent();
-        HabitEvent event4 = new HabitEvent();
-        HabitEvent event5 = new HabitEvent();
-        HabitEvent event6 = new HabitEvent();
+        HabitEvent event1 = new HabitEvent(null, "comment", location);
+        HabitEvent event2 = new HabitEvent(null, "comment", location);
+        HabitEvent event3 = new HabitEvent(null, "comment", location);
+        HabitEvent event4 = new HabitEvent(null, "comment", location);
+        HabitEvent event5 = new HabitEvent(null, "comment", location);
+        HabitEvent event6 = new HabitEvent(null, "comment", location);
         habit1.addEvent(event1);
         habit1.addEvent(event2);
         habit2.addEvent(event3);
@@ -151,6 +158,9 @@ public class ProfileTest {
     @Test
     public void testHabitHistoryFiltered() {
 
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Profile test = new Profile("Test", "Test");
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
@@ -161,12 +171,12 @@ public class ProfileTest {
         test.addHabit(habit1);
         test.addHabit(habit2);
         test.addHabit(habit3);
-        HabitEvent event1 = new HabitEvent();
-        HabitEvent event2 = new HabitEvent();
-        HabitEvent event3 = new HabitEvent();
-        HabitEvent event4 = new HabitEvent();
-        HabitEvent event5 = new HabitEvent();
-        HabitEvent event6 = new HabitEvent();
+        HabitEvent event1 = new HabitEvent(null, "comment", location);
+        HabitEvent event2 = new HabitEvent(null, "comment", location);
+        HabitEvent event3 = new HabitEvent(null, "comment", location);
+        HabitEvent event4 = new HabitEvent(null, "comment", location);
+        HabitEvent event5 = new HabitEvent(null, "comment", location);
+        HabitEvent event6 = new HabitEvent(null, "comment", location);
         habit1.addEvent(event1);
         habit1.addEvent(event2);
         habit2.addEvent(event3);
@@ -188,6 +198,9 @@ public class ProfileTest {
      */
     @Test
     public void testHabitHistorySearch() {
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Profile test = new Profile("Test", "Test");
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
@@ -198,12 +211,12 @@ public class ProfileTest {
         test.addHabit(habit1);
         test.addHabit(habit2);
         test.addHabit(habit3);
-        HabitEvent event1 = new HabitEvent("search term", 0);
-        HabitEvent event2 = new HabitEvent("not", 0);
-        HabitEvent event3 = new HabitEvent("not", 0);
-        HabitEvent event4 = new HabitEvent("not", 0);
-        HabitEvent event5 = new HabitEvent("search term", 0);
-        HabitEvent event6 = new HabitEvent("search term", 0);
+        HabitEvent event1 = new HabitEvent(null, "search term", location);
+        HabitEvent event2 = new HabitEvent(null, "not", location);
+        HabitEvent event3 = new HabitEvent(null, "not", location);
+        HabitEvent event4 = new HabitEvent(null, "not", location);
+        HabitEvent event5 = new HabitEvent(null, "search term", location);
+        HabitEvent event6 = new HabitEvent(null, "search term", location);
         habit1.addEvent(event1);
         habit1.addEvent(event2);
         habit2.addEvent(event3);
@@ -225,6 +238,9 @@ public class ProfileTest {
      */
     @Test
     public void testHabitHistoryIndex() {
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Profile test = new Profile("Test", "Test");
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
@@ -235,12 +251,12 @@ public class ProfileTest {
         test.addHabit(habit1);
         test.addHabit(habit2);
         test.addHabit(habit3);
-        HabitEvent event1 = new HabitEvent();
-        HabitEvent event2 = new HabitEvent();
-        HabitEvent event3 = new HabitEvent();
-        HabitEvent event4 = new HabitEvent();
-        HabitEvent event5 = new HabitEvent();
-        HabitEvent event6 = new HabitEvent();
+        HabitEvent event1 = new HabitEvent(null, "comment", location);
+        HabitEvent event2 = new HabitEvent(null, "comment", location);
+        HabitEvent event3 = new HabitEvent(null, "comment", location);
+        HabitEvent event4 = new HabitEvent(null, "comment", location);
+        HabitEvent event5 = new HabitEvent(null, "comment", location);
+        HabitEvent event6 = new HabitEvent(null, "comment", location);
         habit1.addEvent(event1);
         habit1.addEvent(event2);
         habit2.addEvent(event3);
@@ -261,6 +277,9 @@ public class ProfileTest {
      */
     @Test
     public void testHabitHistoryIndexSearch() {
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Profile test = new Profile("Test", "Test");
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
@@ -271,12 +290,12 @@ public class ProfileTest {
         test.addHabit(habit1);
         test.addHabit(habit2);
         test.addHabit(habit3);
-        HabitEvent event1 = new HabitEvent("search term", 0);
-        HabitEvent event2 = new HabitEvent("not", 0);
-        HabitEvent event3 = new HabitEvent("not", 0);
-        HabitEvent event4 = new HabitEvent("search term", 0);
-        HabitEvent event5 = new HabitEvent("search term", 0);
-        HabitEvent event6 = new HabitEvent("not", 0);
+        HabitEvent event1 = new HabitEvent(null, "search term", location);
+        HabitEvent event2 = new HabitEvent(null, "not", location);
+        HabitEvent event3 = new HabitEvent(null,"not", location);
+        HabitEvent event4 = new HabitEvent(null, "search term", location);
+        HabitEvent event5 = new HabitEvent(null, "search term", location);
+        HabitEvent event6 = new HabitEvent(null, "not", location);
         habit1.addEvent(event1);
         habit1.addEvent(event2);
         habit2.addEvent(event3);
@@ -296,6 +315,9 @@ public class ProfileTest {
      */
     @Test
     public void testHabitHistoryHabit() {
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Profile test = new Profile("Test", "Test");
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
@@ -306,12 +328,12 @@ public class ProfileTest {
         test.addHabit(habit1);
         test.addHabit(habit2);
         test.addHabit(habit3);
-        HabitEvent event1 = new HabitEvent();
-        HabitEvent event2 = new HabitEvent();
-        HabitEvent event3 = new HabitEvent();
-        HabitEvent event4 = new HabitEvent();
-        HabitEvent event5 = new HabitEvent();
-        HabitEvent event6 = new HabitEvent();
+        HabitEvent event1 = new HabitEvent(null, "comment", location);
+        HabitEvent event2 = new HabitEvent(null, "comment", location);
+        HabitEvent event3 = new HabitEvent(null, "comment", location);
+        HabitEvent event4 = new HabitEvent(null, "comment", location);
+        HabitEvent event5 = new HabitEvent(null, "comment", location);
+        HabitEvent event6 = new HabitEvent(null, "comment", location);
         habit1.addEvent(event1);
         habit1.addEvent(event2);
         habit2.addEvent(event3);
@@ -333,6 +355,9 @@ public class ProfileTest {
      */
     @Test
     public void testHabitHistoryHabitSearch() {
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Profile test = new Profile("Test", "Test");
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
@@ -343,12 +368,12 @@ public class ProfileTest {
         test.addHabit(habit1);
         test.addHabit(habit2);
         test.addHabit(habit3);
-        HabitEvent event1 = new HabitEvent("search term", 0);
-        HabitEvent event2 = new HabitEvent("not", 0);
-        HabitEvent event3 = new HabitEvent("not", 0);
-        HabitEvent event4 = new HabitEvent("search term", 0);
-        HabitEvent event5 = new HabitEvent("search term", 0);
-        HabitEvent event6 = new HabitEvent("not", 0);
+        HabitEvent event1 = new HabitEvent(null,"search term", location);
+        HabitEvent event2 = new HabitEvent(null, "not", location);
+        HabitEvent event3 = new HabitEvent(null, "not", location);
+        HabitEvent event4 = new HabitEvent(null, "search term", location);
+        HabitEvent event5 = new HabitEvent(null, "search term", location);
+        HabitEvent event6 = new HabitEvent(null, "not", location);
         habit1.addEvent(event1);
         habit1.addEvent(event2);
         habit2.addEvent(event3);
@@ -359,6 +384,7 @@ public class ProfileTest {
         testEvents.add(event4);
         assertEquals(test.habitHistory(habit2, "search term"), testEvents);
     }
+
 
 
 

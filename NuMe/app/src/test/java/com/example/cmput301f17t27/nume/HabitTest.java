@@ -27,36 +27,76 @@ public class HabitTest  {
      */
     @Test
     public void TestAddEvent() throws Exception{
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
         frequency.add("Monday");
         Habit habit = new Habit("Test", "Test", dateToStart, frequency);
-        HabitEvent event = new HabitEvent();
+        HabitEvent event = new HabitEvent(null, "comment", location);
         habit.addEvent(event);
         assertTrue(habit.hasEvent(event));
     }
 
     @Test
     public void testDeleteEvent() throws Exception{
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
         frequency.add("Monday");
         Habit habit = new Habit("Test", "Test", dateToStart, frequency);
-        HabitEvent event = new HabitEvent();
+        HabitEvent event = new HabitEvent(null, "comment", location);
         habit.addEvent(event);
         habit.deleteEvent(event);
         assertFalse(habit.hasEvent(event));
     }
 
     @Test
-    public void testViewStats() throws Exception{
+    public void testDeleteByIndex() throws Exception {
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
         Date dateToStart = new Date();
         ArrayList<String> frequency = new ArrayList<>();
         frequency.add("Monday");
         Habit habit = new Habit("Test", "Test", dateToStart, frequency);
-        HabitEvent event1 = new HabitEvent();
-        HabitEvent event2 = new HabitEvent();
-        HabitEvent event3 = new HabitEvent();
+        HabitEvent event1 = new HabitEvent(null, "comment", location);
+        HabitEvent event2 = new HabitEvent(null, "comment", location);
+        habit.addEvent(event1);
+        habit.addEvent(event2);
+        habit.deleteEvent(0);
+        assertFalse(habit.hasEvent(event1));
+    }
+
+    @Test
+    public void testToString() throws Exception {
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
+        Date dateToStart = new Date();
+        ArrayList<String> frequency = new ArrayList<>();
+        frequency.add("Monday");
+        Habit habit = new Habit("Test", "Test", dateToStart, frequency);
+        String habitString = habit.toString();
+        String habitExpected = "Habit: Test\nReason:Test";
+        assertEquals(habitString, habitExpected);
+    }
+
+    @Test
+    public void testViewStats() throws Exception{
+        double location[] = new double[2];
+        location[0] = 0.0;
+        location[1] = 0.0;
+        Date dateToStart = new Date();
+        ArrayList<String> frequency = new ArrayList<>();
+        frequency.add("Monday");
+        Habit habit = new Habit("Test", "Test", dateToStart, frequency);
+        HabitEvent event1 = new HabitEvent(null, "comment", location);
+        HabitEvent event2 = new HabitEvent(null, "comment", location);
+        HabitEvent event3 = new HabitEvent(null, "comment", location);
         habit.addEvent(event1);
         habit.addEvent(event2);
         habit.addEvent(event3);
