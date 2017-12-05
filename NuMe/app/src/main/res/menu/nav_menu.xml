@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="NuMe">
+        <menu>
+            <item
+                android:id="@+id/habitsbutton"
+                android:icon="?android:attr/textCheckMark"
+                android:title="@string/habits" />
+            <item
+                android:id="@+id/eventsearchbutton"
+                android:icon="@android:drawable/ic_menu_search"
+                android:title="@string/eventSeacrh" />
+
+            <item
+                android:id="@+id/mapbutton"
+                android:icon="@android:drawable/ic_menu_mapmode"
+                android:title="@string/map"
+                android:visible="true" />
+        </menu>
+    </item>
+
+    <item android:title="Connect">
+        <menu>
+            <item
+                android:id="@+id/notificationsbutton"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/notifications" />
+            <item
+                android:id="@+id/followersbutton"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/followers" />
+            <item
+                android:id="@+id/followingbutton"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/following" />
+        </menu>
+    </item>
+
+    <item android:title="Profile">
+        <menu>
+            <item
+                android:id="@+id/editprofilebutton"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/editProfile" />
+        </menu>
+    </item>
+
+</menu>

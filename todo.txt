@@ -1,0 +1,19 @@
+Colman:
+-Notifications (Habit frequency, follow requests, follow accpeting)
+-Following
+-Followers
+
+Dylan:
+-Maps
+
+Matt:
+-Stats
+-Logout
+-Change full name
+
+Stan:
+-Make UI look better
+-Push notifications
+
+Xuan:
+-Habit event searching

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="com.example.cmput301f17t27.nume.habit.ViewHabitActivity" >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPink"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.14"
+        android:fontFamily="@font/pt_sans_italic"
+        android:text="@string/title"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/reason"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.16"
+        android:fontFamily="@font/pt_sans_italic"
+        android:text="@string/reason"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.14"
+        android:fontFamily="@font/pt_sans_italic"
+        android:text="@string/startDate"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/frequency"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.10"
+        android:fontFamily="@font/pt_sans_italic"
+        android:text="@string/frequencies"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/eventstitle"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:fontFamily="@font/pt_sans"
+        android:text="@string/events"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:gravity="center_vertical"/>
+
+    <ListView
+        android:id="@+id/eventlist"
+        android:layout_width="345dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_height="153dp"
+        android:layout_weight="0.42" />
+
+    <Button
+        android:id="@+id/addeventbutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_custom_pink"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="@string/addEvent"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/editbutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_custom_pink"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="@string/edit"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/deletebutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_custom_pink"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="@string/delete"
+        android:textSize="24sp" />
+
+</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/fullname_edit"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/pt_sans"
+        android:ems="10"
+        android:hint="@string/newName"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/savebutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_custom_pink"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="@string/save"
+        android:textSize="24sp"
+        android:typeface="monospace" />
+
+    <Button
+        android:id="@+id/cancelbutton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:background="@drawable/button_custom_pink"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="@string/cancel"
+        android:textSize="24sp"
+        android:typeface="monospace" />
+
+</LinearLayout>

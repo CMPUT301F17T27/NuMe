@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cmput301f17t27.nume"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Include required permissions for Google Maps API to run. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.cmput301f17t27.nume.account.LoginActivity"
+            android:label="@string/login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.cmput301f17t27.nume.habit.HabitListActivity"
+            android:label="@string/habits"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.habit.AddHabitActivity"
+            android:label="@string/addAHabit" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.habit.ViewHabitActivity"
+            android:label="@string/viewHabit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.habitEvent.AddEventActivity"
+            android:label="@string/addAnEvent" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.habitEvent.EditEventActivity"
+            android:label="@string/editEvent" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.habit.EditHabitActivity"
+            android:label="@string/editHabit" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.habitEvent.ViewEventActivity"
+            android:label="@string/viewEvent" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.account.CreateAccountActivity"
+            android:label="@string/createAccount" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name="com.example.cmput301f17t27.nume.various.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name="com.example.cmput301f17t27.nume.habitEvent.EventSearchActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="com.example.cmput301f17t27.nume.account.EditProfileActivity"
+            android:label="@string/editProfile" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.follows.FollowingActivity"
+            android:label="@string/following" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.follows.ProfileSearchActivity"
+            android:label="@string/searchPeople" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.follows.FollowersActivity"
+            android:label="@string/followers" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.follows.ViewFollowingHabitActivity"
+            android:label="@string/viewHabit" />
+        <activity
+            android:name="com.example.cmput301f17t27.nume.various.NotificationsActivity"
+            android:label="@string/notifications" />
+        <activity android:name="com.example.cmput301f17t27.nume.habit.HabitStatsActivity" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.1.0" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="android.arch.lifecycle.VERSION"
+            android:value="27.0.0-SNAPSHOT" />
+    </application>
+
+</manifest>
