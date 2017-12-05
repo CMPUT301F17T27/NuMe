@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/cshome/koivisto/CMPUT301/NuMe-master/NuMe/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/cshome/koivisto/CMPUT301/NuMe-master/NuMe/app/src/debug/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\School\CMPUT301\deleteBuild\NuMe\NuMe\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\School\CMPUT301\deleteBuild\NuMe\NuMe\app\src\debug\jniLibs"/></dataSet></merger>

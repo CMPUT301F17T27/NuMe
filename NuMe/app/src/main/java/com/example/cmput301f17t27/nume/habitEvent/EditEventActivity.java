@@ -201,21 +201,30 @@ public class EditEventActivity extends AppCompatActivity {
                 //Get the bitmap image
                 Bitmap imageBmp = BitmapFactory.decodeFile(selectedPath);
 
-                //Convert to byte array to check size
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                imageBmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                //If the image is too big
-                if(stream.toByteArray().length > 65536) {
-                    //Alert the user
+                try {
+                    //Convert to byte array to check size
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    imageBmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    //If the image is too big
+                    if(stream.toByteArray().length > 65536) {
+                        //Alert the user
+                        Toast newToast = Toast.makeText(getApplicationContext(),
+                                "Image too large. Try another image.",
+                                Toast.LENGTH_SHORT);
+                        newToast.show();
+                    }
+                    //If the image is not too big
+                    else {
+                        //Update the image being displayed
+                        image.setImageBitmap(imageBmp);
+                    }
+                }
+                catch( Exception e) {
                     Toast newToast = Toast.makeText(getApplicationContext(),
-                            "Image too large. Try another image.",
+                            "Please check connection",
                             Toast.LENGTH_SHORT);
                     newToast.show();
-                }
-                //If the image is not too big
-                else {
-                    //Update the image being displayed
-                    image.setImageBitmap(imageBmp);
+                    finish();
                 }
             }
         }

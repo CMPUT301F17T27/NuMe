@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/cshome/koivisto/CMPUT301/NuMe-master/NuMe/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "E:\\School\\CMPUT301\\deleteBuild\\NuMe\\NuMe\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "/cshome/koivisto/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/3f28510808e047ebe35e62f6d27bf76d/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\Matt\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2195bd4b229305f9f93666e7e015e41c\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
